@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+  ],
+	"settings": {
+		"editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "workbench.colorCustomizations": {},
+    "editor.wrappingIndent": "indent",
+    "editor.rulers": [
+      80
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "git.autofetch": true,
+    "telemetry.enableCrashReporter": false,
+		"telemetry.enableTelemetry": false,
+		"files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+  }
+}

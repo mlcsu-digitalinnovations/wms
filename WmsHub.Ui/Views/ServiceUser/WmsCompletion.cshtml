@@ -1,0 +1,31 @@
+@model ServiceUserModel
+@{
+    ViewData["Title"] = "Service Choice Confirmed";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-card wms-card">
+            <div class="nhsuk-card__content">
+                <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-full">
+                        @if (string.IsNullOrWhiteSpace(Model.EmailAddress))
+                        {
+                            <h1>You have not provided your email address.</h1>
+                            <p>Your referral has been cancelled and your GP practice will be notified.</p>
+                        }
+                        else
+                        {
+
+                            <h1>You have now picked your service.</h1>
+                            <p>There is nothing else for you to do. The service that you selected will be in contact shortly to let you know what happens next.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,103 @@
+﻿@using WmsHub.Ui.Models
+@model ReferralListItemModel
+
+<input type="hidden" asp-for="DateOfBirthDay" />
+<input type="hidden" asp-for="DateOfBirthMonth" />
+<input type="hidden" asp-for="DateOfBirthYear" />
+
+<div id="wms-date-of-birth-button" role="button">
+  <div class="wms-date-of-birth-button_content">
+    <button class="nhsuk-button" 
+            type="button" 
+            style="float:right;top:-40px;height:35px;border-radius:0px;padding-top:3px;" 
+            onclick="openDialog('wms-date-of-birth-dialog', this)">
+      Update
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+     id="wms-date-of-birth-dialog"
+     aria-labelledby="wms-date-of-birth-dialog_label"
+     aria-modal="true"
+     class="hidden">
+  <div class="nhsuk-card wms-card">
+    <div class="nhsuk-card__content">
+      <div class="dialog-header">
+        <h2 id="wms-date-of-birth-dialog_label" class="nhsuk-heading-l nhsblue">
+          Update Date Of Birth
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <fieldset class="nhsuk-fieldset" aria-describedby="date-of-birth-hint" role="group">
+          <legend class="nhsuk-fieldset__legend">
+            Age: <span id="date-of-birth-age"></span>
+          </legend>
+          <div id="date-of-birth-group-date" class="nhsuk-form-group">
+            <span class="nhsuk-error-message" style="display:none"
+                  id="date-of-birth-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span>
+              A valid date of birth is required. Age must be between 18 and 110.
+            </span>
+            <div class="nhsuk-date-input" id="date-of-birth">
+              <div class="nhsuk-date-input__item">a
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="date-of-birth-day">
+                    Day
+                  </label>
+                  <input type="hidden" id="hf_date_of_birth_day" class="date_of_birth_date" />
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                         id="date-of-birth-day"
+                         inputmode="numeric"
+                         type="text" pattern="[0-9]*"
+                         readonly="readonly">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label"
+                         for="date-of-birth-month">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                         id="date-of-birth-month"
+                         inputmode="numeric"
+                         type="text" pattern="[0-9]*"
+                         readonly="readonly">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label"
+                         for="date-of-birth-year">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                         id="date-of-birth-year"
+                         inputmode="numeric"
+                         type="text" pattern="[0-9]*"
+                         readonly="readonly">
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset> 
+        <div>&nbsp;</div>
+      </div>
+      <button class="nhsuk-button nhsuk-button--secondary"
+              type="button"
+              onclick="return cancel_date_of_birth(this);">
+        Cancel
+      </button>
+      <button id="submitDateOfBirth"
+              type="submit"
+              asp-action="UpdateDateOfBirth"
+              value="Update"
+              name="update-date-of-birth"
+              class="nhsuk-button"
+              onclick="return update_date_of_birth();">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

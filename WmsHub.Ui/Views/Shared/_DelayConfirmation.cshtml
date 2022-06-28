@@ -1,0 +1,163 @@
+@using WmsHub.Ui.Models
+@model ReferralListItemModel
+<div id="wms-delay-button" role="button">
+    <div class="wms-delay-button_content">
+        <button class="nhsuk-button nhsuk-button--warning" type="button" onclick="openDialog('wms-delay-dialog', this)">
+            Delay
+        </button>
+    </div>
+</div>
+
+<div role="dialog"
+     id="wms-delay-dialog"
+     aria-labelledby="wms-delay-dialog_label"
+     aria-modal="true"
+     class="hidden">
+    <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+            <div class="dialog-header">
+                <h2 id="wms-delay-dialog_label" class="nhsuk-heading-l nhsblue">
+                    Confirm Delay
+                </h2>
+            </div>
+            <div class="dialog-content">
+              <fieldset class="nhsuk-fieldset" aria-describedby="delay-hint" role="group">
+                <legend class="nhsuk-fieldset__legend">
+                  Delay until what date?
+                </legend>
+                <div id="delay-reason-group-date" class="nhsuk-form-group">
+                  <span class="nhsuk-error-message" style="display:none"
+                        id="dateDelayReason-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span>
+                    A delay until date is required.
+                  </span>
+                  <div class="nhsuk-date-input" id="delay">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="delay-day">
+                          Day
+                        </label>
+                        <input type="hidden" id="hf_delay_day" class="delay_date" />
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                               id="delay-day"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label"
+                               for="delay-month">
+                          Month
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                               id="delay-month"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label"
+                               for="delay-year">
+                          Year
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                               id="delay-year"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+                <div id="delay-reason-group" class="nhsuk-form-group">
+                  <span class="nhsuk-error-message" style="display:none"
+                        id="txtDelayReason-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span>
+                    A delay reason of at least 5 characters is required.
+                  </span>
+                  <label class="nhsuk-label nhsuk-date-input__label"
+                         for="txtDelayReason">
+                    Delay Reason
+                  </label>
+                  <textarea cols="1" row="5" id="txtDelayReason" class="nhsuk-textarea" ></textarea>
+                    <br />
+                </div>
+            </div>
+            <button class="nhsuk-button nhsuk-button--secondary" 
+                    type="button" 
+                   onclick="return cancel_delay(this);">
+                Cancel
+            </button>
+            <button id="submitDelay"
+                    type="submit"
+                    asp-action="ConfirmDelay"
+                    value="Confirm"
+                    name="confirm-delay"
+                    class="nhsuk-button"
+                    onclick="return confirm_delay();">
+                Confirm
+            </button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    
+
+    function confirm_delay() {
+        var isValid = true;
+
+        var day = $('#delay-day').val();
+        var month = $('#delay-month').val();
+        var year = $('#delay-year').val();
+
+        if ($("#txtDelayReason").val().length < 5) {
+            $("#txtDelayReason-error").show();
+            $("#delay-reason-group").addClass("nhsuk-form-group--error");
+            isValid = false;
+        } else {
+          $("#txtDelayReason-error").hide();
+            $("#delay-reason-group").removeClass("nhsuk-form-group--error");
+        }
+
+        var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(20[2-9])([0-9])$/;
+
+        var testDate = month + '/' + day + '/' + year;
+        if (date_regex.test(testDate)) {
+            $("#dateDelayReason-error").hide();
+          $("#delay-reason-group-date").removeClass("nhsuk-form-group--error");
+
+        } else {
+            $("#dateDelayReason-error").show();
+            $("#delay-reason-group-date").addClass("nhsuk-form-group--error");
+           isValid = false;
+        }
+        if (isValid) {
+            $("#DelayReason").val($("#txtDelayReason").val());
+            $("#DelayUntil").val(year + '-' + month + '-' + day);
+            return true;
+        }
+        $("#DelayReason").val('');
+        $("#DelayUntil").val('');
+        return false;
+    }
+
+    function cancel_delay(control) {
+        $("#delay-reason-group").removeClass("nhsuk-form-group--error");
+        $("#delay").removeClass("nhsuk-form-group--error");
+        $("#txtDelayReason-error").hide();
+        $("#dateDelayReason-error").hide();
+        $("#txtDelayReason").val('');
+        $('#delay-day').val('');
+        $('#delay-month').val('');
+        $('#delay-year').val('');
+        closeDialog(control);
+    }
+
+</script>

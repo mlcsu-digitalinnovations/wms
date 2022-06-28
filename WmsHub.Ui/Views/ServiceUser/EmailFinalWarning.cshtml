@@ -1,0 +1,76 @@
+﻿@using WmsHub.Ui.Models
+@model ContactModel
+@{
+    ViewData["Title"] = "Are you sure you don't want to provide an email address?";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-back-link">
+    <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="email-confirmation" asp-route-id=@Model.Id>
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back
+    </a>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-card wms-card">
+            <div class="nhsuk-card__content">
+                <h1 class="nhsuk-heading-l">
+                    Are you sure you don't want to provide an email address?
+                </h1>
+                <div class="nhsuk-warning-callout">
+                    <h2 class="nhsuk-warning-callout__label">
+                        Important<span class="nhsuk-u-visually-hidden">:</span>
+                    </h2>
+                    <p>
+                        <strong>
+                            To use the NHS digital weight management programme you must
+                            provide an email address.
+                        </strong>
+                        </p>
+                    <p>
+                        If you would like to provide email address please click
+                        "Go back and add email". If you are sure you do not want to 
+                        provide an email address, or you don't have and email address,
+                        click "Cancel my referral". Your referral will then be 
+                        cancelled and your GP practice will be notified.
+                    </p>
+                </div>
+                <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-one-half">
+                        <a asp-action="email-confirmation"
+                           asp-controller="ServiceUser"
+                           asp-route-id="@Model.Id"
+                           value="Go back and add email"
+                           name="Go back and add email"
+                           class="nhsuk-button"
+                           id=@Model.Id>
+                            Go back and add email
+                        </a>
+                    </div>
+                    <div class="nhsuk-grid-column-one-half">
+                        <a asp-action="email-not-provided"
+                           asp-controller="ServiceUser"
+                           asp-route-id="@Model.Id"
+                           value="Cancel my referral"
+                           name="Cancel my referral"
+                           class="nhsuk-button nhsuk-button--danger">
+                            Cancel my referral
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

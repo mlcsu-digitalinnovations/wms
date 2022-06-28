@@ -1,0 +1,41 @@
+@model ReferralListModel
+
+<input type="hidden" asp-for="ActiveUser" />
+
+<h1 class="nhsuk-heading-m">Vulnerable Referral List</h1>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <form asp-controller="Rmc" asp-action="VulnerableList" method="get" class="search-form" id="referralSearch">
+          <partial name="_ReferralSearch" for="Search" />
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+              <input type="submit" value="Search" class="nhsuk-button" style="margin-bottom: 0px;" />
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+              <partial name="_ListLimit" for="Count" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <partial name="_ReferralList" for="@Model" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aspnet-signalr/1.0.26/signalr.min.js" integrity="sha512-b6eoEcu0xfFPMuNtfGgk0HXtbwep2u4Zfyu7yowAF+4IfMDHfvbro13zeZnrtYr0nV/10bBogonVRK+7kOSmfw==" crossorigin="anonymous"></script>
+<script src="~/js/referrallist_signalr.js"></script>

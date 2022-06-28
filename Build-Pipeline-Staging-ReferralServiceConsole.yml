@@ -1,0 +1,111 @@
+trigger:
+- production
+
+variables:
+- group: wmshub-test-group
+- group: wmshub-build-number
+
+name: $(SourceBranchName)_$(buildMajor).$(buildMinor).$(Date:yyMMdd)$(Rev:.rr)
+
+steps:
+
+- task: PowerShell@2
+  displayName: 'List Environmental Variables'
+  inputs:
+    targetType: 'inline'
+    script: 'dir env:'
+
+- task: NuGetToolInstaller@1
+
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '$(projectName)/$(projectName).csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-Common'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.Common/WmsHub.Common.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-ReferralsService'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.ReferralsService/WmsHub.ReferralsService.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-IdentityAgentApi'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'IdentityAgentApi/IdentityAgentApi.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-WmsHub.Referral.Api'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.Referral.Api/WmsHub.Referral.Api.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-WmsHub.ReferralsService.Pdf'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.ReferralsService.Pdf/WmsHub.ReferralsService.Pdf.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-WmsHub.Business'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.Business/WmsHub.Business.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-WmsHub.Common.Api'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.Common.Api/WmsHub.Common.Api.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages-WmsHub.ReferralService.Interop'
+  inputs:
+    command: 'restore'
+    restoreSolution: 'WmsHub.ReferralService.Interop/WmsHub.ReferralService.Interop.csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: MSBuild@1
+  inputs:
+    solution: '$(projectName)/$(projectName).csproj'
+    msbuildArchitecture: 'x86'
+    platform: '$(buildPlatform)'
+    configuration: $(buildConfiguration)
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**\$(projectName)\bin\$(buildConfiguration)\**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop$(artifactName)'
+    publishLocation: 'Container'
+

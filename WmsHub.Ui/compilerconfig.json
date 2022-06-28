@@ -1,0 +1,7 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/wms-main.css",
+    "inputFile": "wwwroot/css/main.scss",
+    "useNodeSass": true
+  }
+]

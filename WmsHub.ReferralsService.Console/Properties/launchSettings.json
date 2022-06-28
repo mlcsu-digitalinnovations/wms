@@ -1,0 +1,53 @@
+{
+  "profiles": {
+    "Process Referrals": {
+      "commandName": "Project",
+      "commandLineArgs": "/process_referrals"
+    },
+    "Reprocess": {
+      "commandName": "Project",
+      "commandLineArgs": "/reprocess_referrals"
+    },
+    "Test File": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_file \"C:\\Temp\\Wms\\Download\\003HI022.pdf\""
+    },
+    "Test Critical": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_critical"
+    },
+    "Help": {
+      "commandName": "Project",
+      "commandLineArgs": "-h"
+    },
+    "Version": {
+      "commandName": "Project",
+      "commandLineArgs": "-v"
+    },
+    "Test Failure - Development": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Test Failure - Production": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Production"
+      }
+    },
+    "Test Failure - Staging": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Staging"
+      }
+    },
+    "Upload Missing Log": {
+      "commandName": "Project",
+      "commandLineArgs": "/upload_missing_log C:\\temp\\WmsHub\\auditlogs\\logAudit20220607.txt \"2022-06-07 10:00:00\""
+    }
+  }
+}

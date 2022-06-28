@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    },
+    "Seed Sms 5000": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=sms /no=5000"
+    }
+  }
+}

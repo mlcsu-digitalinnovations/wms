@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Name="iOAgent"><Application Name="iOAgent" PollForPopups="0" MustHavePopupStyle="7929972" PromptRegionUpgrade="1" HasDynamicAccIDs="0" UseWebEvents="1" USeStructureChangedEvents="1" OCRControlTypes="" DefaultClearTextEscapes="&lt;CTRL+A&gt;" UseSendKeyboardString="0" RefreshControlPointers="1" ScanDesktopDescendants="0"><Screen Name="iO_Identity_Agent" Profile="iOAgent\winprofiles\iO_Identity_Agent.xpf" Image="iOAgent\iO_Identity_Agent_img.jpg" ControlTree="iOAgent\iO_Identity_Agent_tree.xml"/></Application></Project>

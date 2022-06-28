@@ -1,0 +1,70 @@
+﻿<div id="wms-help-bar" role="complementary">
+    <div class="wms-help-bar_content">
+        <button onclick="openDialog('wms-help-dialog', this)">
+            @{ SVGhelp("help-bar_help"); }
+            Help
+        </button>
+
+        <a class="helpButton" asp-controller="Home" asp-action="Help" target="_blank">
+            @{ SVGhelp("help-bar_help_mobile"); }
+            Help
+        </a>
+    </div>
+</div>
+
+<div role="dialog" id="wms-help-dialog" aria-labelledby="wms-help-dialog_label" aria-modal="true" class="hidden">
+    <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+            <div class="dialog-header">
+                <h2 id="wms-help-dialog_label" class="nhsuk-heading-l nhsblue">
+                    Help
+                </h2>
+                <button class="close-help-dialog" onclick="closeDialog(this)">
+                    <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" focusable="false">
+                        <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z">
+                        </path>
+                    </svg>
+                    <span class="nhsuk-u-visually-hidden">Close menu</span>
+                </button>
+            </div>
+            <div class="dialog-content">
+                <p>
+                    If you are experiencing any issues with the Referral Hub, please contact the MLCSU Referral Management Centre
+                    using the details below.
+                </p>
+                <p>Referral Management Centre Enquiries : <a href="tel:+441772660010">01772 660 010</a></p>
+                @if (Model?.Ubrn != null)
+                {
+                    <p>UBRN: @Model.Ubrn</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions{
+    void SVGhelp(string id)
+    {
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" id="@id">
+            <defs>
+            </defs>
+            <g class="a" transform="translate(1154 1204)">
+                <path class="d"
+                      d="M-1148-1184h-4a2,2,0,0,1-2-2v-16a2,2,0,0,1,2-2h16a2,2,0,0,1,2,2v16a2,2,0,0,1-2,2h-4l-4,4Z" />
+                <path class="e"
+                      d="M -1143.999877929688 -1182.828369140625 L -1141.41357421875 -1185.414672851562 C -1141.03857421875 -1185.789794921875 -1140.52978515625 -1186.00048828125 -1139.999389648438 -1186.00048828125 L -1136 -1186.000244140625 L -1135.999877929688 -1202.000244140625 L -1151.999877929688 -1202.00048828125 L -1152 -1186.00048828125 L -1148.00048828125 -1186.00048828125 C -1147.470092773438 -1186.00048828125 -1146.961303710938 -1185.789794921875 -1146.586303710938 -1185.414672851562 L -1143.999877929688 -1182.828369140625 M -1143.999877929688 -1179.999877929688 L -1148.00048828125 -1184.00048828125 L -1152 -1184.00048828125 C -1153.104370117188 -1184.00048828125 -1153.999877929688 -1184.89501953125 -1153.999877929688 -1186.000244140625 L -1153.999877929688 -1202.00048828125 C -1153.999877929688 -1203.104736328125 -1153.104370117188 -1204.000244140625 -1152 -1204.000244140625 L -1135.999877929688 -1204.000244140625 C -1134.8955078125 -1204.000244140625 -1134 -1203.104736328125 -1134 -1202.00048828125 L -1134 -1186.000244140625 C -1134 -1184.89501953125 -1134.8955078125 -1184.00048828125 -1135.999877929688 -1184.00048828125 L -1139.999389648438 -1184.00048828125 L -1143.999877929688 -1179.999877929688 Z" />
+            </g>
+            <g transform="translate(-258.312 -762.95)">
+                <path class="b"
+                      d="M1419.764,1974.139a2.315,2.315,0,0,1,2.629-2.2,2.709,2.709,0,0,1,2.589,3.323c-.238,2.022-2.862,1.852-2.589,4.556"
+                      transform="translate(-1154 -1204)" />
+                <g class="c" transform="translate(267.431 778.248)">
+                    <rect class="d" width="2.134" height="2.134" rx="1" />
+                    <rect class="f" x="1" y="1" width="0.134" height="0.134" />
+                </g>
+            </g>
+        </svg>
+        <br />
+    }
+}

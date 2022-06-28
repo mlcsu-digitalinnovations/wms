@@ -1,0 +1,99 @@
+﻿@using WmsHub.Ui.Models
+@model ReferralListItemModel
+<div id="wms-mobile-number-button" role="button">
+  <div class="wms-mobile-number-button_content">
+    <button class="nhsuk-button"
+            type="button"
+            style="float:right;top:-40px;height:35px;border-radius:0px;padding-top:3px;"
+            onclick="openDialog('wms-mobile-number-dialog', this)">
+      Update
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+     id="wms-mobile-number-dialog"
+     aria-labelledby="wms-mobile-number-dialog_label"
+     aria-modal="true"
+     class="hidden">
+  <div class="nhsuk-card wms-card">
+    <div class="nhsuk-card__content">
+      <div class="dialog-header">
+        <h2 id="wms-mobile-number-dialog_label" class="nhsuk-heading-l nhsblue">
+          Update Mobile Number
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <fieldset class="nhsuk-fieldset" aria-describedby="mobile-number-hint" role="group">
+          <legend class="nhsuk-fieldset__legend">
+            Example: +447 123 456789
+          </legend>
+          <div id="mobile-number-group" class="nhsuk-form-group">
+            <span class="nhsuk-error-message" style="display:none"
+                  id="mobile-number-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span>
+              A valid UK mobile number is required, starting with +447.
+            </span>
+            <label class="nhsuk-label nhsuk-date-input__label"
+                   for="txtDelayReason">
+              Mobile Number
+            </label>
+            <input class="nhsuk-input" id="mobile-number" type="text">
+            <br />
+          </div>  
+        </fieldset>        
+        <div>&nbsp;</div>
+      </div>
+      <button class="nhsuk-button nhsuk-button--secondary"
+              type="button"
+              onclick="return cancel_mobile_number(this);">
+        Cancel
+      </button>
+      <button id="submitMobileNumber"
+              type="submit"
+              asp-action="UpdateMobileNumber"
+              value="Update"
+              name="update-mobile-number"
+              class="nhsuk-button"
+              onclick="return update_mobile_number();">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  function update_mobile_number() {
+    var isValid = true;
+    var currentMobile = $('#Mobile').val();
+
+    var mobile = $('#mobile-number').val();
+    mobile = mobile.replace(/\s/g, '');
+
+    var mobile_regex = /^\+447(\d[0-9]{8})$/;
+    if (mobile_regex.test(mobile)) {
+      $("#mobile-number-error").hide();
+      $("#mobile-number-group").removeClass("nhsuk-form-group--error");
+    } else {
+      $("#mobile-number-error").show();
+      $("#mobile-number-group").addClass("nhsuk-form-group--error");
+      isValid = false;
+    }
+
+    if (isValid) {
+      $("#Mobile").val(mobile);
+      return true;
+    }
+
+    $("#Mobile").val(currentMobile);
+    return false;
+  }
+
+  function cancel_mobile_number(control) {
+    $("#mobile-number-group").removeClass("nhsuk-form-group--error");
+    $("#mobile-number").removeClass("nhsuk-form-group--error");
+    $("#mobile-number-error").hide();
+    closeDialog(control);
+  }
+
+</script>

@@ -1,0 +1,21 @@
+﻿@using System.Security.Principal
+
+@if (User.Identity.IsAuthenticated)
+{
+    string loggedInName = User.Identity.Name;
+    if (User.Claims.Where(c => c.Type == "name").First().Value != null)
+    {
+        loggedInName = User.Claims.FirstOrDefault(c => c.Type == "name").Value;
+    }
+    
+
+    <a class="nhsuk-header__navigation-link header-account-icon" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">
+        Welcome, @loggedInName. Sign out
+    </a>
+}
+else
+{
+    <a class="nhsuk-header__navigation-link header-account-icon" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">
+        Sign in
+    </a>
+}

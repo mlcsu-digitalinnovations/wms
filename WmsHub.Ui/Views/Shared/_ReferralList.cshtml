@@ -1,0 +1,52 @@
+@model ReferralListModel
+
+<div class="nhsuk-table-container">
+    <table role="table" class="nhsuk-table-responsive rmc-table" id="referralList">
+        <thead role="rowgroup" class="nhsuk-table__head">
+            <tr role="row">
+                <th role="columnheader" class="" scope="col"><abbr title="Unique Booking Reference Number">Ubrn</abbr></th>
+                <th role="columnheader" class="" scope="col">Given Name</th>
+                <th role="columnheader" class="" scope="col">Family Name</th>
+                <th role="columnheader" class="" scope="col">Date of Birth</th>
+                <th role="columnheader" class="" scope="col">Date Of Referral</th>
+                <th role="columnheader" class="" scope="col">Status</th>
+                <th role="columnheader" class="" scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+            @foreach (var item in Model.ListItems)
+            {
+                <tr role="row" class="nhsuk-table__row">
+                    <td role="cell" class="nhsuk-table__cell rmc-table-ubrn">
+                        <span class="nhsuk-table-responsive__heading">Ubrn </span>
+                        @item.Ubrn
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                        <span class="nhsuk-table-responsive__heading">Given Name </span>
+                        @item.GivenName
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                        <span class="nhsuk-table-responsive__heading">Family Name </span>
+                        @item.FamilyName
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                        <span class="nhsuk-table-responsive__heading">Date of Birth </span>
+                        @Convert.ToDateTime(item.DateOfBirth.Date).ToString("dd/MM/yyyy")
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                        <span class="nhsuk-table-responsive__heading">Date Of Referral </span>
+                        @Convert.ToDateTime(item.DateOfReferral.Date).ToString("dd/MM/yyyy")
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                        <span class="nhsuk-table-responsive__heading">Status </span>
+                        @item.ListDisplayStatus
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell" id="view-@(item.Id)">
+                        <span class="nhsuk-table-responsive__heading"></span>
+                        <a class="nhsuk-link" asp-controller="Rmc" asp-action="ReferralView" asp-route-id="@item.Id">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

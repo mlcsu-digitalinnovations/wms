@@ -1,0 +1,11 @@
+{
+  "_comment":  "Do not use this - it contains default values.  Use the appsettings.json file in the Console project instead.",
+  "AccreditedSystemId": "",
+  "Data": {
+    "CreateProfessionalSessionPath": "./MockData/Files/A001ResponseBody.json",
+    "ProfessionalSessionSelectRolePath": "./MockData/Files/A002ResponseBody.json",
+    "RetrieveWorklistPath": "./MockData/Files/A008ResponseBody.json",
+    "RegistrationListPath": "./MockData/Files/RegistrationList.json",
+    "RegistrationPath": "./MockData/Files/A005Response"
+  }
+}

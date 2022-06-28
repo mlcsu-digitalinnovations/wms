@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-full">
+                <h1 class="nhsblue">Contact Us</h1>
+                <p>
+                    If you are experiencing any issues with the Referral Hub, please contact the MLCSU Referral Management Centre
+                    using the details below.
+                </p>
+                <p>Referral Management Centre Enquiries : <a href="tel:+441772660010">01772 660 010</a></p>
+                @if (Model?.Ubrn != null)
+                {
+                    <p>UBRN: @Model.Ubrn</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

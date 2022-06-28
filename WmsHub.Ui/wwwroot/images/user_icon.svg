@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 41 39" style="enable-background:new 0 0 41 39;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#B4B4B4;}
+	.st1{fill:#FFFFFF;}
+</style>
+<g>
+	<g id="a">
+		<g transform="translate(3.088 2.088)">
+			<circle class="st0" cx="17.4" cy="17.4" r="17.4"/>
+			<path class="st1" d="M9.5,23.9v-2c0-2.2,3.5-3.9,7.9-3.9s7.9,1.8,7.9,3.9v2H9.5z M13.5,12.1c0-2.2,1.8-3.9,3.9-3.9
+				s3.9,1.8,3.9,3.9S19.6,16,17.4,16l0,0C15.2,16,13.5,14.2,13.5,12.1z"/>
+		</g>
+	</g>
+</g>
+</svg>

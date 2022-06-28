@@ -1,0 +1,19 @@
+﻿
+
+.nhsuk-input.input-validation-error {
+    @extend .nhsuk-input--error;
+}
+
+.nhsuk-select.input-validation-error {
+    @extend .nhsuk-select--error;
+}
+
+.nhsuk-error-message {
+    .field-validation-valid {
+        display: none;
+    }
+
+    .field-validation-error {
+        display: block;
+    }
+}

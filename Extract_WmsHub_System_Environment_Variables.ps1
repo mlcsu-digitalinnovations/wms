@@ -1,0 +1,1 @@
+gci env:* | sort-object name | Where-Object {$_.Name -like "*WmsHub*"} | Foreach {"[System.Environment]::SetEnvironmentVariable('$($_.Name)', '$($_.Value)', 'Machine')"}

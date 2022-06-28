@@ -1,0 +1,7 @@
+﻿.nhsuk-button--warning {
+    @include nhsuk-style-button-variant(#ffc107, true);
+}
+
+.nhsuk-button--danger {
+    @include nhsuk-style-button-variant($color_nhsuk-red, false);
+}

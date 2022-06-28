@@ -1,0 +1,89 @@
+<div id="wms-export-button" role="complementary">
+  <div class="wms-export-button_content">
+    <button class="nhsuk-button"
+			type="button"
+			onclick="getConfirmationMessage()">
+      Export
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+	id="wms-export-dialog"
+  aria-labelledby="wms-export-dialog_label"
+  aria-modal="true"
+  class="hidden">
+  <div class="nhsuk-card wms-card">
+  	<div class="nhsuk-card__content">
+    	<div class="dialog-header">
+      	<h2 id="wms-export-dialog_label" class="nhsuk-heading-l nhsblue">
+        	Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+      	<p id="displayMessage"></p>
+      </div>
+			<button class="nhsuk-button nhsuk-button--secondary"
+        id="close-btn"
+				type="button" onclick="closeDialog(this)">
+				Cancel
+			</button>
+			<button
+				type="submit"
+        asp-action="ExportLetters"
+				value="Confirm"
+        id="confirm-export"
+				name="confirm-export"
+				class="nhsuk-button">
+				Confirm
+			</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  document.getElementById("confirm-export").addEventListener('click', () => {
+    closeDialog(document.getElementById('close-btn'));
+    setTimeout(checkForExportSuccess, 500);
+  });
+
+  function checkForExportSuccess() {
+    if (document.cookie.indexOf('Wmp.Export.Letters') < 0)
+    {
+      setTimeout(checkForExportSuccess, 500);
+    } else {
+      document.cookie = "Wmp.Export.Letters=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+      removeExportedRows();
+    }
+  }
+
+	function getConfirmationMessage() {
+    document.cookie = "Wmp.Export.Letters=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+
+		var selectedReferrals = document.querySelectorAll("input[type='checkbox']:checked");
+
+		if(selectedReferrals.length == 0) return;
+
+		$('#displayMessage').text('Export ' + selectedReferrals.length + ' referral(s) ?');
+		openDialog('wms-export-dialog', this);
+	}
+
+  function removeExportedRows() {
+
+    var selectedReferrals = document.querySelectorAll("input[type='checkbox']:checked");
+
+    if(selectedReferrals.length == 0) return;
+
+    $(':checkbox:checked').each(function(index) {
+      var parentRows = $(this).closest('tr');
+
+      if(parentRows.length > 0)
+      {
+        var parentRowIndex = parentRows[0].rowIndex;
+        document.getElementById('letterList').deleteRow(parentRowIndex);
+      }
+    })
+  }
+
+</script>

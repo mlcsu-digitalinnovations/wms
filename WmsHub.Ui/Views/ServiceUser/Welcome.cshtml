@@ -1,0 +1,82 @@
+@using WmsHub.Ui.Models
+@model WelcomeModel;
+
+@{
+  ViewData["Title"] = "Welcome";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+<form method="post" asp-controller="ServiceUser" asp-action="Get-Started" asp-route-id="@Model.Id">
+  <input type="hidden" asp-for="Id" />
+  <input type="hidden" asp-for="Ubrn" />
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+            <h1 class="nhsuk-u-visually-hidden">NHS Digital Weight Management Programme Referral Hub</h1>
+          <h2 class="nhsuk-heading-xl nhsblue">Hello</h2>
+          <h3 class="nhsuk-heading-m purple">@Model.DisplayName</h3>
+          <p class="nhsuk-body">
+              Welcome to the Digital Weight Management Programme Referral Hub.
+              Here you can quickly and easily choose a service that
+              will help you manage your weight.
+          </p>
+          <p class="nhsuk-body">
+            You will be asked for your date of birth so that we can
+            verify your identity.
+            @if (Model.IsGpReferral)
+            {
+              <span>
+                You will also be asked for your ethnicity, which you do
+                not have to provide but will help us suggest services
+                that match your needs.
+              </span>
+            }
+          </p>
+          <p class="nhsuk-body">
+            The programme will only be accessible to those who have a
+            smartphone or computer with internet access and is
+            delivered exclusively digitally.
+            @if (Model.IsGpReferral)
+            {
+              <span>
+                You be asked to confirm your e-mail address to ensure
+                you can access the services offered and get the full
+                benefits.
+              </span>
+            }
+          </p>
+        </div>
+      </div>
+      <input type="submit" value="Get Started" class="nhsuk-button" />
+    </div>
+  </div>
+</form>
+
+
+@section scripts{
+  <partial name="_ValidationScriptsPartial" />
+
+  <script type="text/javascript">
+    document.getElementById("wms-help-bar").classList.add("cookies-visible");
+
+    function handleCloseCookies() {
+      document.getElementById('cookiebanner').style.display = 'none';
+      document.getElementById("wms-help-bar").classList.remove("cookies-visible");
+    }
+  </script>
+}
+
+@section cookies{
+  <aside id="nhsuk-cookie-banner" data-nosnippet="true" role="complementary" aria-labelledby="cookie-title">
+    <div class="nhsuk-cookie-banner" id="cookiebanner">
+      <div class="nhsuk-width-container">
+        <h2 id="cookie-title">Cookies on the NHS Digital Weight Management Programme Referral Hub</h2>
+        <p>We've put some small files called cookies on your device to make our site work.</p>
+        <p>You can <a id="nhsuk-cookie-banner__link" asp-controller="Home" asp-action="CookiesPolicy" tabindex="0">read more about our cookies here</a>.</p>
+        <ul>
+          <li><button class="nhsuk-button" id="nhsuk-cookie-banner__link_accept_analytics" tabindex="0" onclick="handleCloseCookies()">I understand</button></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+}

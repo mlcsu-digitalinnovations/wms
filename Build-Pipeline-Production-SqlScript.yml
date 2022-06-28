@@ -1,0 +1,34 @@
+trigger:
+- production
+
+variables:
+- group: wmshub-test-group
+- group: wmshub-build-number
+
+name: $(SourceBranchName)_$(buildMajor).$(buildMinor).$(Date:yyMMdd)$(Rev:.rr)
+
+steps:
+
+- task: NuGetToolInstaller@1
+
+- task: DotNetCoreCLI@2
+  displayName: Update dotnet-ef
+  continueOnError: true
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'update dotnet-ef --global'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Create database update script'
+  inputs:  
+    command: 'custom'
+    custom: 'ef'
+    arguments: 'migrations script --project=./$(projectName)/$(projectName).csproj -i -o $(Build.ArtifactStagingDirectory)/$(artifactName)/WmsHub_Database_Update.sql'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish build artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(artifactName)'
+    ArtifactName: 'drop$(artifactName)'
+    publishLocation: 'Container'
