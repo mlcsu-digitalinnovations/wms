@@ -1,0 +1,64 @@
+@using WmsHub.Business.Models.ReferralStatusReason;
+@using WmsHub.Ui.Models
+@using WmsHub.Business.Models;
+
+@model ReferralListItemModel
+<div id="wms-rejection-button" role="button">
+    <div class="wms-rejection-button_content">
+        <button class="nhsuk-button nhsuk-button--danger" type="button" >
+            Reject Referral
+        </button>
+    </div>
+</div>
+
+<div role="dialog"
+     id="wms-rejection-dialog"
+     aria-labelledby="wms-rejection-dialog_label"
+     aria-modal="true"
+     class="hidden">
+    <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+            <div class="dialog-header">
+                <h2 id="wms-rejection-dialog_label" 
+                    class="nhsuk-heading-l nhsblue">
+                    Confirm Rejection
+                </h2>
+            </div>
+
+            <div class="dialog-content">
+              <div id="rejection-reason-group" class="nhsuk-form-group">
+                <label class="nhsuk-label" for="example">
+                  Rejection reason
+                </label>
+                <span class="nhsuk-error-message hidden"
+                      id="txtStatusReason-error">
+                  <span class="nhsuk-u-visually-hidden">Error:</span>
+                  Please select a rejection reason from the list below.
+                </span>
+                  <select class="nhsuk-select" id="choiceRejectionReason">
+                    <option value="0">-- Please Select --</option>
+                    @{
+                      foreach (ReferralStatusReason item in Model.ReferralStatusReasons)
+                      {
+                        <option value="@item.Id">@item.Description</option>
+                      }
+                    }
+                  </select>
+              </div>
+
+            </div>
+            <button id="cancelRejection" class="nhsuk-button nhsuk-button--secondary" type="button">
+                Cancel
+            </button>
+            <button 
+                id="submitStatusReason"
+                type="submit"
+                asp-action="RejectBeforeProviderSelection"
+                value="Confirm"
+                name="confirm-rejection"
+                class="nhsuk-button">
+                Confirm
+            </button>
+        </div>
+    </div>
+</div>

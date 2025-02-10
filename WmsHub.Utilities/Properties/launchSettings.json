@@ -1,0 +1,56 @@
+{
+  "profiles": {
+    "B2C AD File Convert to SQL": {
+      "commandName": "Project",
+      "commandLineArgs": "/configuration-values=true"
+    },
+    "Config Values - Report": {
+      "commandName": "Project",
+      "commandLineArgs": "/configuration-values=true /reportdifferences=true"
+    },
+    "Config Values - Script": {
+      "commandName": "Project",
+      "commandLineArgs": "/configuration-values=true /script=true"
+    },
+    "Config Values - Sort": {
+      "commandName": "Project",
+      "commandLineArgs": "/configuration-values=true /sort=true"
+    },
+    "Config Values - Update": {
+      "commandName": "Project",
+      "commandLineArgs": "/configuration-values=true /reportdifferences=false"
+    },
+    "Fix Provider Email Link Text Messages": {
+      "commandName": "Project",
+      "commandLineArgs": "/fix-provider-email-link-text-messages=true"
+    },
+    "Public Referral UI Test Referrals": {
+      "commandName": "Project",
+      "commandLineArgs": "/public-referral-ui-test-referrals=true"
+    },
+    "Seed 1 for each source": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=source"
+    },
+    "Seed 1 referral for each status": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=status"
+    },
+    "Seed Development": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=dev"
+    },
+    "Seed ElectiveCarePostErrors": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=electivecareerrors"
+    },
+    "Seed Sms 5000": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=sms /no=5000"
+    },
+    "Seed 10,000 Provider Submissions": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed=prov /no=10000 "
+    }
+  }
+}

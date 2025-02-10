@@ -1,0 +1,9 @@
+﻿.nhsuk-input.disabled {
+    cursor: not-allowed;
+    background-color: $nhsuk-border-color;
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}

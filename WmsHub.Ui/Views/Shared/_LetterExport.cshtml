@@ -1,0 +1,42 @@
+<div id="wms-export-button" role="complementary">
+  <div class="wms-export-button_content">
+    <button class="nhsuk-button"
+			type="button">
+      Export
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+	id="wms-export-dialog"
+  aria-labelledby="wms-export-dialog_label"
+  aria-modal="true"
+  class="hidden">
+  <div class="nhsuk-card wms-card">
+  	<div class="nhsuk-card__content">
+    	<div class="dialog-header">
+      	<h2 id="wms-export-dialog_label" class="nhsuk-heading-l nhsblue">
+        	Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+      	<p id="displayMessage"></p>
+      </div>
+			<button class="nhsuk-button nhsuk-button--secondary"
+        id="close-btn">
+				Cancel
+			</button>
+			<button
+				type="submit"
+        asp-action="ExportLetters"
+				value="Confirm"
+        id="confirm-export"
+				name="confirm-export"
+				class="nhsuk-button">
+				Confirm
+			</button>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/views/shared/_LetterExport.js" defer></script>

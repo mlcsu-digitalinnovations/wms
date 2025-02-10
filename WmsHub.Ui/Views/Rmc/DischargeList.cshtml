@@ -1,0 +1,106 @@
+@model ReferralListModel
+
+<input type="hidden" asp-for="ActiveUser" />
+
+<h1 class="nhsuk-heading-xl">Discharge Letter List</h1>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <form asp-controller="Rmc" asp-action="DischargeList" method="get" class="search-form" id="referralSearch">
+          <partial name="_ReferralSearch" for="Search" />
+          <input type="submit" value="Search" class="nhsuk-button" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form asp-controller="Rmc" asp-action="DischargeLetters" method="post">
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+          <partial name="_ListLimit" for="Count" />
+          <div class="nhsuk-table-container">
+            <table role="table" class="nhsuk-table-responsive rmc-table" id="dischargeList">
+              <thead role="rowgroup" class="nhsuk-table__head">
+                <tr role="row">
+                  <th role="columnheader" class="" scope="col">Ubrn</th>
+                  <th role="columnheader" class="" scope="col">Given Name</th>
+                  <th role="columnheader" class="" scope="col">Family Name</th>
+                  <th role="columnheader" class="" scope="col">Date of Birth</th>
+                  <th role="columnheader" class="" scope="col">Date Of Referral</th>
+                  <th role="columnheader" class="" scope="col">Discharge</th>
+                  <th role="columnheader" class="" scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body">
+                @for (int i = 0; i < Model.ListItems.Count; i++)
+                {
+                  var item = Model.ListItems[i];
+                  var cellName = "referral-" + item.Id.ToString();
+
+                  <tr role="row" class="nhsuk-table__row">
+                    <td role="cell" class="nhsuk-table__cell rmc-table-ubrn">
+                      <input type="hidden" asp-for="@Model.ListItems[i].Id" id="ListItems[@(i)].Id" />
+                      <span class="nhsuk-table-responsive__heading">Ubrn </span>
+                      @item.Ubrn
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Given Name </span>
+                      @item.GivenName
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Family Name </span>
+                      @item.FamilyName
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Date of Birth </span>
+                      @Convert.ToDateTime(item.DateOfBirth.Date).ToString("dd/MM/yyyy")
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Date Of Referral </span>
+                      @Convert.ToDateTime(item.DateOfReferral.Date).ToString("dd/MM/yyyy")
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell">
+                      <span class="nhsuk-table-responsive__heading">Export </span>
+                      <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+                        <div class="nhsuk-checkboxes__item">
+                          <input type="checkbox"
+                                 class="nhsuk-checkboxes__input"
+                                 id="ListItems[@(i)].Export"
+                                 name="ListItems[@(i)].Export"
+                                 value="true"
+                                 aria-expanded="false" />
+                          <label class="nhsuk-label nhsuk-checkboxes__label" for="ListItems[@(i)].Export">
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td role="cell" class="nhsuk-table__cell" id="view-@(item.Id)">
+                      <span class="nhsuk-table-responsive__heading"></span>
+                      <a class="nhsuk-link" asp-controller="Rmc" asp-action="ReferralView" asp-route-id="@item.Id">View</a>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+            <br />
+            <partial name="_DischargeLetters" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+@section scripts{
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js" integrity="sha512-7SRCYIJtR6F8ocwW7UxW6wGKqbSyqREDbfCORCbGLatU0iugBLwyOXpzhkPyHIFdBO0K2VCu57fvP2Twgx1o2A==" crossorigin="anonymous"></script>
+  <script src="~/js/referrallist_signalr.js"></script>
+  <script src="~/js/utils.js"></script>
+  <script src="~/js/accessible_modal.js"></script>
+  }

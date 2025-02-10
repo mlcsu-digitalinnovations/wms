@@ -1,0 +1,21 @@
+﻿@if (ViewBag == null || ViewBag.ShowEnvironmentAlert == null || ViewBag.LiveSiteUrl == null || ViewBag.Environment == null)
+{
+  <div class="nhsuk-environment-alert">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-environment-alert__content">
+        Signed Out
+      </div>
+    </div>
+  </div>
+}
+else if (ViewBag.ShowEnvironmentAlert && ViewBag.LiveSiteUrl != null)
+{
+  <div class="nhsuk-environment-alert">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-environment-alert__content">
+        @ViewBag.Environment Environment - For testing only, please DO NOT USE live data. The live
+        site is here <a href="@ViewBag.LiveSiteUrl">@ViewBag.LiveSiteUrl.Replace("https://", string.Empty)</a>
+      </div>
+    </div>
+  </div>
+}

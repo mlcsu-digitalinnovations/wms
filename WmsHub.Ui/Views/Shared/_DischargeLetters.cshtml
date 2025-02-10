@@ -1,0 +1,43 @@
+<div id="wms-discharge-button" role="complementary">
+  <div class="wms-discharge-button_content">
+    <button class="nhsuk-button"
+			type="button">
+      Create Discharge Letters
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+	id="wms-discharge-dialog"
+  aria-labelledby="wms-discharge-dialog_label"
+  aria-modal="true"
+  class="hidden">
+  <div class="nhsuk-card wms-card">
+  	<div class="nhsuk-card__content">
+    	<div class="dialog-header">
+      	<h2 id="wms-discharge-dialog_label" class="nhsuk-heading-l nhsblue">
+        	Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+      	<p id="displayMessage"></p>
+      </div>
+			<button class="nhsuk-button nhsuk-button--secondary"
+        id="close-btn"
+				type="button">
+				Cancel
+			</button>
+			<button
+				type="submit"
+        asp-action="CreateDischargeLetters"
+				value="Confirm"
+        id="confirm-discharge"
+				name="confirm-discharge"
+				class="nhsuk-button">
+				Confirm
+			</button>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/views/shared/_DischargeLetters.js"></script>

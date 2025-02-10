@@ -1,0 +1,11 @@
+﻿/// <reference path="../../node_modules/nhsuk-frontend/packages/core/settings/all.scss" />
+/// <reference path="../../node_modules/nhsuk-frontend/packages/core/tools/all.scss" />
+
+.rmc-list-limit {
+  width: 100%;
+  text-align: right;
+
+  label, select {
+    display: inline;
+  }
+}

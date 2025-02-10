@@ -1,0 +1,153 @@
+@model ProviderInfoModel
+
+<h1 class="nhsuk-heading-m">Status</h1>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-heading-s">Referral Status</h2>
+        <div class="nhsuk-table-container">
+          <table role="table" class="nhsuk-table-responsive rmc-table" id="referralStatusList">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">Source</th>
+                <th role="columnheader" class="" scope="col">Active</th>
+                <th role="columnheader" class="" scope="col">Complete</th>
+                <th role="columnheader" class="" scope="col">Cancelled by eReferrals</th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              @foreach (var source in Model.Sources)
+              {
+              <tr role="row" class="nhsuk-table__row">
+                <td role="cell" class="nhsuk-table__cell rmc-table-ubrn">
+                  <span class="nhsuk-table-responsive__heading">Name</span>
+                  @source.Name
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Active</span>
+                  @source.NoOfActiveReferrals
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Complete</span>
+                  @source.NoOfCompleteReferrals
+                </td>
+                <td role="cell" class="nhsuk-table__cell">
+                  <span class="nhsuk-table-responsive__heading">Cancelled</span>
+                  @source.NoOfCancelledReferrals
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-heading-s">Provider Status</h2>
+        <div class="nhsuk-table-container">
+          <table role="table" class="nhsuk-table-responsive rmc-table" id="referralList">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">Name</th>
+                <th role="columnheader" class="" scope="col">Status</th>
+                <th role="columnheader" class="" scope="col">Level 1</th>
+                <th role="columnheader" class="" scope="col">Level 2</th>
+                <th role="columnheader" class="" scope="col">Level 3</th>
+                <th role="columnheader" class="" scope="col">Elective Care</th>
+                <th role="columnheader" class="" scope="col">GP</th>
+                <th role="columnheader" class="" scope="col">MSK</th>
+                <th role="columnheader" class="" scope="col">Pharmacy</th>
+                <th role="columnheader" class="" scope="col">Public</th>
+                <th role="columnheader" class="" scope="col">Staff</th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              @foreach (var provider in Model.Providers)
+              {
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell rmc-table-ubrn">
+                    <span class="nhsuk-table-responsive__heading">Name</span>
+                    @provider.Name
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Status</span>
+                    @if (provider.IsActive)
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--green">Active</strong>
+                    }
+                    else
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--red">Inactive</strong>
+                    }
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Level 1</span>
+                    @if (provider.IsLevel1Active)
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--green">Active</strong>
+                    }
+                    else
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--red">Inactive</strong>
+                    }
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Level 2</span>
+                    @if (provider.IsLevel2Active)
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--green">Active</strong>
+                    }
+                    else
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--red">Inactive</strong>
+                    }
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Level 3</span>
+                    @if (provider.IsLevel3Active)
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--green">Active</strong>
+                    }
+                    else
+                    {
+                      <strong class="nhsuk-tag nhsuk-tag--red">Inactive</strong>
+                    }
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active Elective Care Referrals</span>
+                    @provider.NoOfElectiveCareReferrals
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active GP Referrals</span>
+                    @provider.NoOfGpReferrals
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active MSK Referrals</span>
+                    @provider.NoOfMskReferrals
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active Pharmacy Referrals</span>
+                    @provider.NoOfPharmacyReferrals
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active Public Referrals</span>
+                    @provider.NoOfGeneralReferrals
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Active Staff Referrals</span>
+                    @provider.NoOfSelfReferrals
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

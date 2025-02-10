@@ -1,0 +1,24 @@
+@using WmsHub.Ui.Models
+@model ExpiredLinkModel
+
+@{
+	ViewData["Title"] = "Error: Your Link Has Expired";
+	Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-full">
+		<div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+	 		<h1 class="nhsuk-error-summary__title" id="error-summary-title">
+				There is a problem
+	 		</h1>
+	 		<div class="nhsuk-error-summary__body">
+				<p>
+					@Model.ExpirationReason
+				</p>
+				<ul class="nhsuk-list nhsuk-error-summary__list">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

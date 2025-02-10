@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.swagger-ui .model-title {
+  font-size: 12px !important;
+}
+
+.prop .renderedMarkdown p {
+  font-size: 14px;
+  color: forestgreen;
+}

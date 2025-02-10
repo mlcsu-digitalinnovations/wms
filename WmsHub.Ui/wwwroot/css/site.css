@@ -1,0 +1,175 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+@keyframes colourchange {
+    from {background-color: #f00;}
+    to {background-color: #00f;}
+}
+
+@keyframes notify {
+    50% {
+        background-color: #00cc66;
+    }
+    100% {
+        background-color: #fff;
+    }
+}
+
+
+.notify {
+    animation: notify 2s;
+}
+
+.input-box {
+  display: block;
+  width: 100%;
+}
+
+.disabled {
+    pointer-events: none;
+    background-color: #ddd;
+  }
+
+.search {
+    margin-bottom: 20px;
+    margin-top: -10px;
+    display: block;
+  }
+
+.search-form {
+    background-color: #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.form-row {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.display-inline {
+  display: inline;
+}
+
+.display-block {
+  display: block;
+}
+
+.width-25-percent {
+  width: 25% !important;
+}
+
+.height-65-px {
+  height: 65px;
+}
+
+.warning {
+  color: #d5281b;
+}
+
+.reason-more {
+  font-size: 0.6em;
+  color: blue;
+}
+
+.light-cyan-blue {
+  background-color: #d8dde0!important;
+}
+
+.exception-override-button,
+.date-of-birth-button,
+.mobile-number-button {
+  float: right;
+  top: -40px;
+  height: 35px;
+  border-radius: 0px;
+  padding-top: 3px;
+}

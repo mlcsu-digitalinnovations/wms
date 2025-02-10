@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Platforms>x86</Platforms>
+    <Configurations>Debug;Release;DebugNoAE</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PdfPig" Version="0.1.8" />
+    <PackageReference Include="Serilog" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WmsHub.Common.Api\WmsHub.Common.Api.csproj" />
+    <ProjectReference Include="..\WmsHub.ReferralService.Interop\WmsHub.ReferralService.Interop.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="globalmappings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

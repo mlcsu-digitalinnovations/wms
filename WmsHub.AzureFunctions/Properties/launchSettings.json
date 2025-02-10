@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "WmsHub.AzureFunction.Extracts": {
+      "commandName": "Project"
+    }
+  }
+}

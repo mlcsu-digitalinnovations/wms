@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IdentityAgentApi.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "/log_ticket"
+    }
+  }
+}

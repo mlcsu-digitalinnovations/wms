@@ -1,0 +1,31 @@
+﻿using System;
+
+namespace WmsHub.Business.Models.ReferralService
+{
+  public interface IAReferralCreate
+  {
+    string Address1 { get; set; }
+    string Address2 { get; set; }
+    string Address3 { get; set; }
+    DateTimeOffset DateOfBirth { get; set; }
+    DateTimeOffset DateOfBmiAtRegistration { get; set; }
+    string Email { get; set; }
+    string Ethnicity { get; set; }
+    string FamilyName { get; set; }
+    string GivenName { get; set; }
+    bool? HasALearningDisability { get; set; }
+    bool? HasAPhysicalDisability { get; set; }
+    bool? HasDiabetesType1 { get; set; }
+    bool? HasDiabetesType2 { get; set; }
+    bool? HasHypertension { get; set; }
+    bool? HasRegisteredSeriousMentalIllness { get; set; }
+    decimal HeightCm { get; set; }
+    string Mobile { get; set; }
+    string Postcode { get; set; }
+    string ServiceUserEthnicity { get; set; }
+    string ServiceUserEthnicityGroup { get; set; }
+    string Sex { get; set; }
+    string Telephone { get; set; }
+    decimal WeightKg { get; set; }
+  }
+}

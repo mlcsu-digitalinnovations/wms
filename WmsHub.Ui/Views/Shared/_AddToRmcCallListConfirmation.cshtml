@@ -1,0 +1,39 @@
+<div id="wms-add-to-call-list-button" role="button">
+  <div class="wms-add-to-call-list-button_content">
+    <button class="nhsuk-button" type="button">
+      Add to RMC Call List
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+	id="wms-add-to-call-list-dialog"
+  aria-labelledby="wms-add-to-call-list-dialog_label"
+  aria-modal="true"
+  class="hidden">
+  <div class="nhsuk-card wms-card">
+  	<div class="nhsuk-card__content">
+    	<div class="dialog-header">
+      	<h2 id="wms-add-to-call-list-dialog_label" class="nhsuk-heading-l nhsblue">
+        	Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <p>Add referral to call list ?</p>
+      </div>
+			<button id="cancelCloseDialog" class="nhsuk-button nhsuk-button--secondary" type="button" >
+				Cancel
+			</button>
+			<button
+				type="submit"
+				asp-action="AddToRmcCallList"
+				value="Confirm"
+				name="confirm-add-to-call-list"
+				class="nhsuk-button">
+					Confirm
+				</button>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/views/shared/_AddToRmcCallListConfirmation.js" defer></script>

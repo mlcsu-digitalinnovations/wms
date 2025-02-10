@@ -1,0 +1,87 @@
+@using WmsHub.Ui.Models
+@using WmsHub.Business.Enums
+@model ContactModel
+
+@{
+ViewData["Title"] = "Future Contact Preference";
+Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+@if (Model.Source != ReferralSource.SelfReferral)
+{
+    <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="select-ethnicity" asp-route-id=@Model.Id>
+            <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+            </svg>
+            Go back</a>
+    </div>
+}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-full">
+		<div class="nhsuk-card wms-card">
+			<div class="nhsuk-card__content">
+				<form method="post"
+					asp-controller="ServiceUser"
+					asp-action="Contact-Preference"
+					asp-route-id="@Model.Id">
+
+					<fieldset class="nhsuk-fieldset nhsuk-u-padding-bottom-6"
+						aria-describedby="contact-hint">
+						<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+							<h1 class="nhsuk-fieldset__heading">
+								Can NHS England and Improvement contact you about future surveys?
+							</h1>
+						</legend>
+						<div class="nhsuk-form-group">
+							<div class="nhsuk-hint" id="contact-hint">
+								Select one option
+							</div>
+
+							<div class="nhsuk-radios nhsuk-radios--conditional"
+								role="radiogroup">
+								<div class="nhsuk-radios__item" role="radio">
+									<input class="nhsuk-radios__input"
+										asp-for="CanContact"
+										type="radio"
+										value=true
+										id="contact-1"
+										aria-controls="conditional-contact-1">
+									<label class="nhsuk-label nhsuk-radios__label"
+										for="contact-1">
+										Yes
+									</label>
+								</div>
+
+								<input class="nhsuk-input nhsuk-u-width-two-thirds"
+								  asp-for="Email" type="hidden">
+
+								<div class="nhsuk-radios__item" role="radio">
+									<input class="nhsuk-radios__input"
+										id="contact-2"
+										asp-for="CanContact"
+										type="radio"
+										value=false>
+									<label class="nhsuk-label nhsuk-radios__label"
+										for="contact-2">
+										No
+									</label>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+
+					<input type="submit"
+						value="Save and continue"
+						class="nhsuk-button" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts{
+	<partial name="_ValidationScriptsPartial" />
+	<script src="~/js/views/service-user/Contact.js"></script>
+}

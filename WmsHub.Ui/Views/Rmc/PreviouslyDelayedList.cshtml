@@ -1,0 +1,108 @@
+@model ReferralListModel
+
+<input type="hidden" asp-for="ActiveUser" />
+
+<h1 class="nhsuk-heading-m">RMC Delayed List</h1>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <form asp-controller="Rmc" asp-action="PreviouslyDelayedList" method="get" class="search-form" id="referralSearch">
+          <partial name="_ReferralSearch" for="Search" />
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+              <input type="submit" value="Search" class="nhsuk-button nhsuk-u-margin-bottom-0" />
+            </div>
+            <div class="nhsuk-grid-column-one-half">
+              <partial name="_ListLimit" for="Count" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <div class="nhsuk-table-container">
+          <table role="table" class="nhsuk-table-responsive rmc-table" id="referralList">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" class="" scope="col">Ubrn</th>
+                <th role="columnheader" class="" scope="col">Given Name</th>
+                <th role="columnheader" class="" scope="col">Family Name</th>
+                <th role="columnheader" class="" scope="col">Date of Birth</th>
+                <th role="columnheader" class="" scope="col">Date Of Referral</th>
+                <th role="columnheader" class="" scope="col">No. Delays</th>
+                <th role="columnheader" class="" scope="col">Delayed Until</th>
+                <th role="columnheader" class="" scope="col">Delayed Reason</th>
+                <th role="columnheader" class="" scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              @foreach (var item in Model.ListItems)
+              {
+                var cellName = "referral-" + item.Id.ToString();
+
+                <tr role="row" class="nhsuk-table__row">
+                  <td role="cell" class="nhsuk-table__cell rmc-table-ubrn">
+                    <span class="nhsuk-table-responsive__heading">Ubrn </span>
+                    @item.Ubrn
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Given Name </span>
+                    @item.GivenName
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Family Name </span>
+                    @item.FamilyName
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Date of Birth </span>
+                    @Convert.ToDateTime(item.DateOfBirth.Date).ToString("dd/MM/yyyy")
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Date Of Referral </span>
+                    @Convert.ToDateTime(item.DateOfReferral.Date).ToString("dd/MM/yyyy")
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Status</span>
+                    @item.NumberOfDelays
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Delayed Until</span>
+                    @Convert.ToDateTime(item.DelayUntil?.Date).ToString("dd/MM/yyyy")
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell width-25-percent">
+                    <span class="nhsuk-table-responsive__heading">Delayed Reason</span>
+                    @if (!string.IsNullOrWhiteSpace(item.DelayReason)
+                     && item.DelayReason.Length > 100)
+                    {
+                      @item.DelayReason.Substring(0, 100)
+                      <span title='@item.DelayReason'>...<span class="reason-more">(more)</span></span>
+                    }
+                    else
+                    {
+                      @item.DelayReason
+                    }
+                  </td>
+                  <td role="cell" class="nhsuk-table__cell">
+                    <span class="nhsuk-table-responsive__heading">Action </span>
+                    <a asp-controller="Rmc" asp-action="ReferralView" asp-route-id="@item.Id">View</a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section scripts{
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js" integrity="sha512-7SRCYIJtR6F8ocwW7UxW6wGKqbSyqREDbfCORCbGLatU0iugBLwyOXpzhkPyHIFdBO0K2VCu57fvP2Twgx1o2A==" crossorigin="anonymous"></script>
+  <script src="~/js/referrallist_signalr.js"></script>
+  }

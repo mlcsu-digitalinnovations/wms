@@ -1,0 +1,172 @@
+﻿$help-link-color: #e0e6f1;
+$help-bar-width: 82px;
+
+#wms-help-bar {
+    background-color: $color_shade_nhsuk-blue-35;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+
+    @include mq($from: tablet, $and: '(orientation: landscape)') {
+        top: 0;
+        right: 0;
+        bottom: initial;
+        left: initial;
+        height: 100%;
+        width: $help-bar-width;
+        padding: 72px 0; // 72px is height of header TODO: calculate automatically
+        justify-content: start;
+        flex-direction: column;
+
+        &.cookies-visible {
+            top: 235px;
+        }
+    }
+
+    .wms-help-bar_content {
+        color: $help-link-color;
+        text-align: center;
+        padding: 0 24px;
+        height: 100%;
+        flex: 1 1 0;
+
+        @include mq($from: tablet, $and: '(orientation: landscape)') {
+            display: block;
+            margin-bottom: 60px;
+            padding: 15px 0;
+            flex: 0;
+        }
+
+        button, a.helpButton {
+            color: $help-link-color;
+            background-color: $color_shade_nhsuk-blue-35;
+            border: none;
+            width: 100%;
+            height: 100%;
+            font-size: 14px;
+            display: block;
+            padding: 10px 0;
+
+            svg[id^=help-bar_help] {
+                .a, .b, .c, .f {
+                    fill: none;
+                }
+
+                .b, .c {
+                    stroke: $help-link-color;
+                    stroke-width: 2px;
+                }
+
+                .d, .e {
+                    stroke: none;
+                }
+
+                .a, .b {
+                    stroke-linecap: round;
+                }
+
+                .a {
+                    stroke-linejoin: round;
+                }
+
+                .e {
+                    fill: $help-link-color;
+                }
+            }
+
+
+            &:hover {
+                color: $color_nhsuk-white;
+                text-decoration: none;
+
+                svg[id^=help-bar_help] {
+                    .b, .c {
+                        stroke: $color_nhsuk-white;
+                    }
+
+                    .e {
+                        fill: $color_nhsuk-white;
+                    }
+                }
+            }
+
+            &:focus {
+                color: $nhsuk-focus-text-color;
+                background-color: $nhsuk-focus-color;
+                outline: $nhsuk-focus-width solid transparent;
+                outline-offset: $nhsuk-focus-width;
+                box-shadow: 0 -2px $nhsuk-focus-color, 0 $nhsuk-focus-width $nhsuk-focus-text-color;
+                text-decoration: none;
+
+                svg[id^=help-bar_help] {
+                    .b, .c {
+                        stroke: $nhsuk-focus-text-color;
+                    }
+
+                    .e {
+                        fill: $nhsuk-focus-text-color;
+                    }
+                }
+            }
+
+            &:active {
+                color: $nhsuk-link-active-color;
+
+                svg[id^=help-bar_help] {
+                    .b, .c {
+                        stroke: $nhsuk-link-active-color;
+                    }
+
+                    .e {
+                        fill: $nhsuk-link-active-color;
+                    }
+                }
+            }
+        }
+        //hide modal button on mobile
+        button {
+            display: none;
+        }
+    }
+}
+
+
+@include mq($from: tablet, $and: '(orientation: landscape)') {
+    body:not(.rmc-section) {
+        .nhsuk-width-container {
+            padding-right: $help-bar-width;
+        }
+    }
+    //show modal button on desktop & hide page version
+    #wms-help-bar {
+        .wms-help-bar_content {
+            a.helpButton {
+                display: none;
+            }
+
+            button {
+                display: block;
+            }
+        }
+    }
+    //show page version on desktop & hide modal version when JS not enabled.
+    body:not(.js-enabled) {
+        #wms-help-bar {
+            .wms-help-bar_content {
+                a.helpButton {
+                    display: block;
+                }
+
+                button {
+                    display: none;
+                }
+            }
+        }
+
+    }
+}

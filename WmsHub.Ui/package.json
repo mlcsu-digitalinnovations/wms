@@ -1,0 +1,18 @@
+{
+  "name": "wmshub.ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nhsuk-frontend": "9.0.1",
+    "sass": "1.79.5"
+  },
+  "scripts": {
+    "build-css": "sass --no-source-map --silence-deprecation=mixed-decls,color-functions scss/main.scss wwwroot/css/wms-main.css",
+    "build-minified-css": "sass --no-source-map scss/main.scss --silence-deprecation=mixed-decls,color-functions wwwroot/css/wms-main.min.css --style=compressed",
+    "update-and-build": "npm run build-css && npm run build-minified-css"
+  }
+}

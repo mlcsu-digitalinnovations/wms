@@ -1,0 +1,145 @@
+@using WmsHub.Ui.Models
+@using Microsoft.AspNetCore.Http
+@model VerificationModel;
+
+@{
+  ViewData["Title"] = "Date of Birth";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+  var backLink = "ServiceUser/u=?" + @Model.Token;
+}
+
+@{
+  if (Model.Token != null)
+  {
+  <div class="nhsuk-back-link">
+          <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="welcome" asp-route-id=@Model.Token>
+            <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+            </svg>
+            Go back
+          </a>
+  </div>
+  }
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+
+        @{
+          if (Model.Attempt > 0)
+          {
+            int attempts = 3 - Model.Attempt;
+
+            string errorMessage;
+
+            if (Model.IncorrectDOBEntered)
+            {
+              errorMessage = "The date of birth you entered did not match our records. Please check what you have entered and try again.";
+            }
+            else
+            {
+              errorMessage = "On a previous occasion you entered a date of birth that did not match our records. Please try again.";
+            }
+
+            <div class="nhsuk-error-summary">
+              <h2 class="nhsuk-error-summary__title">Incorrect Date of Birth</h2>
+              <div class="nhsuk-error-summary__body">
+                <p>@errorMessage</p>
+                <p>You have @attempts attempt(s) remaining to enter your correct date of birth.</p>
+              </div>
+            </div>
+          }
+        }
+
+        <div id="invalid-date-error" class="nhsuk-error-summary nhsuk-u-visually-hidden">
+            <h2 class="nhsuk-error-summary__title">Invalid Date of Birth</h2>
+            <div class="nhsuk-error-summary__body">
+            <p>Date of birth must be a valid date</p>
+            </div>
+        </div>
+
+        <form method="post"
+              asp-controller="ServiceUser"
+              asp-action="Get-Started"
+              asp-route-id="@Model.Id">
+          <input type="hidden" asp-for="Attempt" />
+          <input type="hidden" asp-for="Id" />
+
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset nhsuk-u-padding-bottom-6"
+                      aria-describedby="dob-hint"
+                      role="group">
+              <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  What is your Date of Birth?
+                </h1>
+              </legend>
+              <div class="nhsuk-hint" id="dob-hint">
+                For example, 15 3 1984
+              </div>
+
+              <span class="nhsuk-error-message" id="dob-errors-error">
+                <span class="nhsuk-u-visually-hidden">Error:</span>
+                <span asp-validation-summary="ModelOnly"></span>
+                <span asp-validation-for="Day"></span>
+                <span asp-validation-for="Month"></span>
+                <span asp-validation-for="Year"></span>
+              </span>
+
+              <div class="nhsuk-date-input" id="dob">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label"
+                           asp-for="Day">
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                           asp-for="Day"
+                           type="text"
+                           pattern="\d+"
+                           maxlength="2">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label"
+                           asp-for="Month">
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                           asp-for="Month"
+                           type="text"
+                           pattern="\d+"
+                           maxlength="2">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label"
+                           asp-for="Year">
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                           asp-for="Year"
+                           type="text"
+                           pattern="\d+"
+                           maxlength="4">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <input type="submit"
+                 value="Confirm your date of birth"
+                 id="confirm-button"
+                 class="nhsuk-button" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section scripts{
+  <script type="text/javascript" src="~/js/views/service-user/verification.js"></script>
+  <partial name="_ValidationScriptsPartial" />  
+}

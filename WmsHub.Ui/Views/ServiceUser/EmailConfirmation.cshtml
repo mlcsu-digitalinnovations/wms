@@ -1,0 +1,122 @@
+﻿@using WmsHub.Ui.Models
+@model ContactModel
+@{
+    string emailConfirmationType = "Enter your email address";
+    if (Model.IsConfirmingEmail)
+    {
+        emailConfirmationType = "Confirm your email address";
+    }
+    else
+    {
+        emailConfirmationType = "Enter your email address";
+    }
+
+    ViewData["Title"] = emailConfirmationType;
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <form method="post"
+              asp-controller="ServiceUser"
+              asp-action="email-confirmation"
+              asp-route-id="@Model.Id">
+          <fieldset class="nhsuk-fieldset nhsuk-u-padding-bottom-6">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                  @emailConfirmationType
+              </h1>
+            </legend>
+            <div class="nhsuk-form-group">
+              <details class="nhsuk-details">
+                <summary class="nhsuk-details__summary"
+                         role="button"
+                         aria-controls="nhsuk-details__text0"
+                         tabindex="0" aria-expanded="false">
+                  <span class="nhsuk-details__summary-text">
+                    Why are we asking?
+                  </span>
+                </summary>
+                <div class="nhsuk-details__text"
+                     id="nhsuk-details__text0"
+                     aria-hidden="true">
+                    <p>
+                        The service providers will contact you via email to provide 
+                        access to weight management tools and resources.</p>
+                    <p>
+                        If you do not have access to an email account or you do
+                        not wish to provide your email address you will not be
+                        able to access the weight management services offered by
+                        this programme.
+                    </p>
+                </div>
+              </details>
+            </div>
+
+            <span class="nhsuk-error-message" id="email-errors-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span>
+              <span asp-validation-summary="ModelOnly"></span>
+              <span asp-validation-for="Email"></span>
+            </span>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" asp-for="Email">
+                Email address
+              </label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds"
+                     asp-for="Email" type="text" autocomplete="email" spellcheck="false" />
+            </div>
+
+            <div class="nhsuk-form-group">
+              <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+                <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input"                         
+                         asp-for="DontContactByEmail"
+                         type="checkbox"
+                         value="true"
+                         />
+
+                  <label class="nhsuk-label nhsuk-checkboxes__label"
+                         asp-for="DontContactByEmail">
+                    I do not wish to provide my email address
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="email-not-supplied-text" class="nhsuk-inset-text hidden">
+              <span class="nhsuk-u-visually-hidden">Information: </span>
+              <p>
+                  If you do not have access to an email account or you do
+                  not wish to provide your email address you will not be
+                  able to access the weight management services offered by
+                  this programme.
+                  However, you will still be able access local weight 
+                  management services. Speak to your GP practice to find
+                  out what is available.
+              </p>
+              @if (Model.HasGpReferralSource)
+              {
+                <p>
+                  If you do not provide, or have, an email address we'll
+                  send your referral back to your GP Practice.
+                </p>
+              }
+            </div>
+          </fieldset>
+          <input type="submit"
+                 value="Save and continue"
+                 class="nhsuk-button" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section scripts{
+
+  <partial name="_ValidationScriptsPartial" />
+  <script src="~/js/views/service-user/EmailConfirmation.js"></script>
+}

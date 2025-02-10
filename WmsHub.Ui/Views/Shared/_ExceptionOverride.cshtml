@@ -1,0 +1,70 @@
+﻿@using WmsHub.Ui.Models
+@model ReferralListItemModel
+
+<input type="hidden" asp-for="Status" />
+
+@if (Model.CanOverrideException)
+{
+  <div id="wms-exception-override-button" role="button">
+    <div class="wms-exception-override-button_content">
+      <button class="nhsuk-button exception-override-button"
+      type="button">
+        Update
+      </button>
+    </div>
+  </div>
+}
+
+<div role="dialog"
+     id="wms-exception-override-dialog"
+     aria-labelledby="wms-exception-override-dialog_label"
+     aria-modal="true"
+     class="hidden">
+  <div class="nhsuk-card wms-card">
+    <div class="nhsuk-card__content">
+      <div class="dialog-header">
+        <h2 id="wms-exception-override-dialog_label" class="nhsuk-heading-l nhsblue">
+          Override current Referral Status of Exception
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <fieldset class="nhsuk-fieldset" aria-describedby="date-of-birth-hint" role="group">
+          <legend class="nhsuk-fieldset__legend">
+            Set Referral Status
+          </legend>
+          <div id="delay-reason-group" class="nhsuk-form-group">
+            <span class="nhsuk-error-message hidden"
+                  id="txtStatusUpdateReason-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span>
+              A reason to change the status must be of at least 5 characters.
+            </span>
+            <label class="nhsuk-label nhsuk-date-input__label"
+                   for="txtStatusUpdateReason">
+              Status Update Reason
+            </label>
+            <textarea cols="1" row="5" id="txtStatusUpdateReason" class="nhsuk-textarea" asp-for="SelectedStatusReason"></textarea>
+            <br />
+            <select class="nhsuk-select"
+              asp-for="SelectedStatus"
+              asp-items="Model.SelectedStatusList">
+            <option value="">Select Status</option>
+            </select>
+          </div>
+        </fieldset> 
+        <div>&nbsp;</div>
+      </div>
+      <button id="cancelexception-override" class="nhsuk-button nhsuk-button--secondary"
+              type="button">
+        Cancel
+      </button>
+      <button id="submitExceptionOverride"
+              type="submit"
+              asp-action="ExceptionOverride"
+              value="Update"
+              name="exception-override"
+              class="nhsuk-button">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div id="wms-contact-button" role="button">
+  <div class="wms-contact-button_content">
+    <button class="nhsuk-button nhsuk-button--danger" type="button">
+      Unable to Contact
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+     id="wms-contact-dialog"
+     aria-labelledby="wms-contact-dialog_label"
+     aria-modal="true"
+     class="hidden">
+  <div class="nhsuk-card wms-card">
+    <div class="nhsuk-card__content">
+      <div class="dialog-header">
+        <h2 id="wms-contact-dialog_label" class="nhsuk-heading-l nhsblue">
+          Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <p>Record this referral as 'Unable to Contact' ?</p>
+        <div id="unable-to-contact-reason-group" class="nhsuk-form-group">
+          <span class="nhsuk-error-message hidden"
+                id="txtUnableToContactReason-error">
+            <span class="nhsuk-u-visually-hidden">Error:</span>
+            An unable to contact reason of at least 5 characters is required.
+          </span>
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 for="txtUnableToContactReason">
+            Unable to Contact Reason
+          </label>
+          <textarea cols="1" row="5" id="txtUnableToContactReason" class="nhsuk-textarea"></textarea>
+          <br />
+        </div>
+      </div>
+      <button id="cancelCloseButton" class="nhsuk-button nhsuk-button--secondary" type="button">
+        Cancel
+      </button>
+      <button id="submitUnableToContact"
+              type="submit"
+              asp-action="UnableToContact"
+              value="Confirm"
+              name="confirm-contact"
+              class="nhsuk-button">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/views/shared/_ContactConfirmation.js" defer></script>

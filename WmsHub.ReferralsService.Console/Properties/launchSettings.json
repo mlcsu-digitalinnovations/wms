@@ -1,0 +1,102 @@
+{
+  "profiles": {
+    "Process Referrals": {
+      "commandName": "Project",
+      "commandLineArgs": "/process_referrals",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Reprocess": {
+      "commandName": "Project",
+      "commandLineArgs": "/reprocess_referrals",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Test File": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_file \"C:\\Temp\\Exceptions\\000394767385.PDF\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Test Critical": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_critical",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Help": {
+      "commandName": "Project",
+      "commandLineArgs": "-h",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Version": {
+      "commandName": "Project",
+      "commandLineArgs": "-v",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Test Failure - Development": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Test Failure - Production": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Production"
+      }
+    },
+    "Test Failure - Staging": {
+      "commandName": "Project",
+      "commandLineArgs": "/test_failure",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Staging"
+      }
+    },
+    "Upload Missing Log": {
+      "commandName": "Project",
+      "commandLineArgs": "/upload_missing_log C:\\temp\\WmsHub\\auditlogs\\logAudit20220607.txt \"2022-06-07 10:00:00\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Process Mock Attachment": {
+      "commandName": "Project",
+      "commandLineArgs": "/process_referrals \"670861100002\" \"00000000-0000-0000-0000-670861100002_Corrected\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Reprocess Mock Attachment": {
+      "commandName": "Project",
+      "commandLineArgs": "/reprocess_referrals \"670861100002\" \"00000000-0000-0000-0000-670861100001\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Report Mock Attachment": {
+      "commandName": "Project",
+      "commandLineArgs": "/report \"670861100002\" \"00000000-0000-0000-0000-670861100002\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "ReReport Mock Attachment": {
+      "commandName": "Project",
+      "commandLineArgs": "/rereport \"670861100002\" \"00000000-0000-0000-0000-670861100002\"",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

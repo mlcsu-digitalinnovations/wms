@@ -1,0 +1,82 @@
+﻿@using WmsHub.Ui.Models
+@model BmiWarningModel
+@{
+  ViewData["Title"] = "Are you sure you want to select " + 
+    Model.ServiceUserEthnicityGroup + " as your ethnic group?";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="select-ethnicity-group" asp-route-id=@Model.Id>
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <h1 class="nhsuk-heading-l">
+          You have chosen your ethnic group as @Model.ServiceUserEthnicityGroup
+        </h1>
+        <div class="nhsuk-warning-callout">
+          <h2 class="nhsuk-warning-callout__label">
+            Important<span class="nhsuk-u-visually-hidden">:</span>
+          </h2>
+          <p>
+            We’re pleased to tell you that your BMI 
+            (@Model.CalculatedBmiAtRegistration) is not within the obesity
+            range. This means you are not eligible for the NHS Digital Weight
+            Management Programme. However, please visit
+            <a href="https://www.nhs.uk/better-health/" target="_blank">
+              NHS Better Health
+            </a>
+            for all the latest advice and apps to help you continue your health
+            and wellbeing journey.
+          </p>
+          <p>
+            A person’s BMI needs to be 30 or over (or 27.5 and over for people
+            from black, Asian and minority ethnic backgrounds) to be eligible for
+            the NHS Digital Weight Management Programme. The BMI threshold is
+            lower for people from these backgrounds because they are at a higher
+            risk of developing conditions such as type 2 diabetes at a lower BMI.
+          </p>
+        </div>
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-half">
+            <a asp-action="select-ethnicity-group"
+               asp-controller="ServiceUser"
+               asp-route-id="@Model.Id"
+               value="Go back and change ethnic group"
+               name="Go back and change ethnic group"
+               class="nhsuk-button"
+               id=@Model.Id>
+              Go back and change ethnic group
+            </a>
+          </div>
+          <div class="nhsuk-grid-column-one-half">
+            <a asp-action="bmi-too-low"
+               asp-controller="ServiceUser"
+               asp-route-id="@Model.Id"
+               value="Cancel my referral"
+               name="Cancel my referral"
+               class="nhsuk-button nhsuk-button--danger">
+              Cancel my referral
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+@section scripts{
+
+  <partial name="_ValidationScriptsPartial" />
+
+}

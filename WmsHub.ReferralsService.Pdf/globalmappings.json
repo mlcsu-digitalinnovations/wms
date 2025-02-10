@@ -1,0 +1,1021 @@
+[
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call to help them get onto the",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call to help them get onto the service? Select Y or N as",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "service? Select Y or N as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a learning disability? Including any Learning Disability, Learning Difficulties, Literacy Difficulties. Select Y or",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "N as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a learning disability? Including any Learning Disability, Learning Difficulties, Literacy Difficulties. Select Y or N as appropriate:",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a physical disability? Including any Physical Disability, Hearing Impairment, Sight Impairment or Dexterity",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Impairment. Select Y or N as appropriate :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a physical disability? Including any Physical Disability, Hearing Impairment, Sight Impairment or Dexterity Impairment. Select Y or N as",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "appropriate :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a severe mental illness? Select Y or N as appropriate:",
+    "Value": "SEVERE MENTAL ILLNESS:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a physical disability? Including any Physical Disability, Hearing Impairment, Sight Impairment or Dexterity Impairment.S elect Y or N as",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Does this person have a learning disability? Including any Learning Disability, Learning Difficulties, Literacy Difficulties.S elect Y or N as appropriate:",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call to help them get onto the service?",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "Select Y or N as",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": ":",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (DXS)",
+    "Key": "appropriate",
+    "Value": "#IGNORE"
+  },
+
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "Does this person have a severe mental illness? Delete Y or N as appropriate:",
+    "Value": "SEVERE MENTAL ILLNESS:"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call to help them",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "get onto the service?",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "Difficulties. Delete Y or N as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "or Dexterity Impairment.",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "or Dexterity Impairment. Delete Y or N as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "get onto the service? Delete Y or N as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "Does this person have a severe mental illness?",
+    "Value": "SEVERE MENTAL ILLNESS:"
+  },
+  {
+    "Comment": "V2 Mapping (System One)",
+    "Key": "Hypertension: th",
+    "Value": "Hypertension:"
+  },
+
+
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call to help them get",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "onto the service? Y or N must be selected :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Difficulties. Y or N must be selected :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "or Dexterity Impairment. Y or N must be selected :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other re ason, need a phone call to help them get",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a learning disability? Including any Learning Disability, Learning Difficulties, Literacy",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Difficulties. Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a learning disability? Including any Learning Disability, Learning Difficulties,",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Literacy Difficulties. Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a severe mental illness? Y or N must be selected:",
+    "Value": "SEVERE MENTAL ILLNESS:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a severe mental illness? Y or N must be selected :",
+    "Value": "SEVERE MENTAL ILLNESS:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a physical disability? Including any Physical Disability, Hearing Impairment, Sight Impairment",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "or Dexterity Impairment. Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person have a physical disability? Including any Physical Disability, Hearing Impairment, Sight",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Impairment or Dexterity Impairment. Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Does this person require a phone call to get onto the service? Y or N must be selected:",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any othe r reason, need a phone call to help them get",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "onto the service? Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "Instead of receiving a SMS text message, does this person, for any other reason, need a phone call",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "V2 Mapping (Emis)",
+    "Key": "to help them get onto the service? Y or N must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "V2 Mapping (All)",
+    "Key": "### AUTO POPULATED REFERRAL END ###",
+    "Value": "#EndMarker:"
+  },
+  {
+    "Comment": "V2 Mapping (All)",
+    "Key": "### AUTO POPULATED REFERRAL START: ###",
+    "Value": "StartMarker:"
+  },
+
+  {
+    "Comment": "Heading. Stops it from bleeding into the Document Version",
+    "Key": "NHS/I NATIONS DIGITAL WEIGHT MANAGEMENT PROGRAMME (DWMP)",
+    "Value": "NHS/I NATIONS DIGITAL WEIGHT MANAGEMENT PROGRAMME (DWMP):"
+  },
+  {
+    "Comment": "Section heading removal",
+    "Key": "Additional Information(*delete as appropriate)",
+    "Value": "Additional Information:"
+  },
+  {
+    "Comment": "Section heading removal",
+    "Key": "Relevant Core Information",
+    "Value": ""
+  },
+  {
+    "Comment": "Section Heading Removal",
+    "Key": "GP DETAILS",
+    "Value": ""
+  },
+  {
+    "Comment": "Section Heading Removal",
+    "Key": "DIGITAL WEIGHT MANAGEMENT SERVICE",
+    "Value": ""
+  },
+  {
+    "Comment": "Section Heading Removal",
+    "Key": "PATIENT DETAILS",
+    "Value": ""
+  },
+  {
+    "Comment": "Page number removal",
+    "Key": "Page 1 of 2",
+    "Value": ""
+  },
+  {
+    "Comment": "Page number removal",
+    "Key": "Page 2 of 2",
+    "Value": ""
+  },
+  {
+    "Comment": "Page number removal",
+    "Key": "Page 1 of 3",
+    "Value": ""
+  },
+  {
+    "Comment": "Page number removal",
+    "Key": "Page 2 of 3",
+    "Value": ""
+  },
+  {
+    "Comment": "Page number removal",
+    "Key": "Page 3 of 3",
+    "Value": ""
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "Specific Codes Table",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Hypertension Dropdown Value",
+    "Key": "No Data",
+    "Value": "false"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "No heights recorded.",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "ValueN",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "high risk",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "KG",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "CM",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "BMI",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "Body mass index :",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "Units",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "nil",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "stone",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "cm",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "kg",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "kg/m2",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Misplaced Template artifact removal",
+    "Key": "Value",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "n",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Yes",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "yes",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "YES",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "No",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please SelectY",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select: N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select:N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please SelectN",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select Y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select No",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select Yes",
+    "Value": "true"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Sex:",
+    "Value": "GENDER:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "NHS No.:",
+    "Value": "NHS NO:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Vulnerable Reason",
+    "Value": "VULNERABLE REASON:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Mobile No.:",
+    "Value": "MOBILE TEL NO:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Home Tel. No.:",
+    "Value": "HOME TEL NO:"
+  },
+  {
+    "Comment": "DXS Answer Bleed Transformation",
+    "Key": "NPhysical Disability including any Physical Disability, Hearing Impairment,",
+    "Value": "false"
+  },
+  {
+    "Comment": "DXS Answer Bleed Transformation",
+    "Key": "YPhysical Disability including any Physical Disability, Hearing Impairment,",
+    "Value": "true"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Sight Impairment or Dexterity Impairment. Y or N must be selected:",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Learning Disability including any Learning Disability, Learning Difficulties,",
+    "Value": "LEARNING DISABILITY:"
+  },
+  {
+    "Comment": "DXS Question Transformation",
+    "Key": "Identified as a Vulnerable Adult Y or N must be selected:",
+    "Value": "IDENTIFIED AS A VULNERABLE ADULT:"
+  },
+  {
+    "Comment": "DXS Artifact",
+    "Key": "FHC1888",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Diabetes Management Plan",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "No diabetes",
+    "Value": "false"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Type 2 diabetes mellitus with neurological",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Type 2 diabetes mellitus without complication",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Insulin treated Type 2 diabetes mellitus",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Type II diabetes mellitus",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Y -Type II diabetes mellitus",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Type II diabetes mellitus without complication",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Gastroparesis with type 2 diabetes mellitus",
+    "Value": "true"
+  },
+  {
+    "Comment": "Diabetes dropdown value",
+    "Key": "Insulin treated type 2 diabetes mellitus",
+    "Value": "true"
+  },
+  {
+    "Comment": "Hypertension Dropdown Value",
+    "Key": "Essential hypertension",
+    "Value": "true"
+  },
+  {
+    "Comment": "Hypertension Dropdown Value",
+    "Key": "Stage 1 Hypertension",
+    "Value": "true"
+  },
+  {
+    "Comment": "Hypertension Dropdown Value",
+    "Key": "Hypertension",
+    "Value": "true"
+  },
+  {
+    "Comment": "Hypertension Dropdown Value",
+    "Key": "Hypertensive Disease",
+    "Value": "true"
+  },
+  {
+    "Comment": "Emis Email Question Transformation",
+    "Key": "Patient Email Address:",
+    "Value": "Email:"
+  },
+  {
+    "Comment": "System One Email Question Transformation",
+    "Key": "Email Address:",
+    "Value": "Email:"
+  },
+  {
+    "Comment": "Vision Question Transformation - Diabetes",
+    "Key": "Diabetes Type 1 Delete as appropriate:",
+    "Value": "Diabetes Type 1:"
+  },
+  {
+    "Comment": "Vision Question Transformation - Diabetes",
+    "Key": "Diabetes Type 2 Delete as appropriate:",
+    "Value": "Diabetes Type 2:"
+  },
+  {
+    "Comment": "Vision Question Transformation - Hypertension",
+    "Key": "Hypertension Delete as appropriate:",
+    "Value": "Hypertension:"
+  },
+  {
+    "Comment": "EMIS question transformation - Physical Disability",
+    "Key": "Physical Disability including any Physical Disability,",
+    "Value": "Physical Disability:"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Complications",
+    "Key": "complications",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "Hearing Impairment, Sight Impairment or Dexterity",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "Impairment. Y or N must be selected:",
+    "Value": "Physical Disability:"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "or N",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "must be",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "must be selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "S1 Question Transformation - Physical Disability",
+    "Key": "Dexterity Impairment. Delete as appropriate:",
+    "Value": "Physical Disability:"
+  },
+  {
+    "Comment": "S1 Question Transformation - Physical Disability",
+    "Key": "Impairment. Delete as appropriate:",
+    "Value": "Physical Disability:"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "(This includes any Physical Disability, Hearing",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "Hearing Impairment, Sight Impairment or",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "Impairment, Sight Impairment or Dexterity Impairment)",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "Impairment)",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "Impairment, Sight Impairment or Dexterity",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Physical Disability",
+    "Key": "Hearing Impairment, Sight Impairment or Dexterity ",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS Line Bleed N option - Physical Disability",
+    "Key": "NPhysical Disability including any Physical Disability,",
+    "Value": "false"
+  },
+  {
+    "Comment": "EMIS Line Bleed Y option - Physical Disability",
+    "Key": "YPhysical Disability including any Physical Disability,",
+    "Value": "true"
+  },
+  {
+    "Comment": "EMIS question transformation - Learning Disability",
+    "Key": "Learning Disability including any Learning Disability,",
+    "Value": "Learning Disability:"
+  },
+  {
+    "Comment": "EMIS extra question text removal Physical Disability",
+    "Key": "Disability, Hearing Impairment, Sight Impairment",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal Physical Disability",
+    "Key": "or Dexterity Impairment. Y or N must be",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Learning Disability",
+    "Key": "Learning Difficulties, Literacy Difficulties. Y or N must be",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Learning Disability",
+    "Key": "Learning Difficulties, Literacy Difficulties. Y",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Learning Disability",
+    "Key": "selected:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "System One question transformation - Learning Disability",
+    "Key": "Learning Disability including any Learning",
+    "Value": "Learning Disability:"
+  },
+  {
+    "Comment": "System One extra question text removal - Learning Disability",
+    "Key": "Disability, Learning Difficulties, Literacy",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "System One extra question text removal - Learning Disability",
+    "Key": "Difficulties.",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Vision extra question text removal - Learning Disability",
+    "Key": "Learning Difficulties, Literacy Difficulties. Delete as",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "Vision extra question text removal - Learning Disability",
+    "Key": "appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "System 1 extra question text removal - Learning Disability",
+    "Key": "Learning Difficulties, Literacy Difficulties.",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "System 1 extra question text removal - Learning Disability",
+    "Key": "Delete as appropriate:",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Learning Disability",
+    "Key": "(This includes Learning Disability, Learning Difficulties,",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Learning Disability",
+    "Key": "(This includes Learning Disability, Learning",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Learning Disability",
+    "Key": "Literacy Difficulties)",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Learning Disability",
+    "Key": "selected: N",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "??? extra question text removal - Learning Disability",
+    "Key": "Difficulties, Literacy Difficulties)",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS extra question text removal - Physical Disability",
+    "Key": "Impairment.",
+    "Value": "#IGNORE"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Vulnerable Adult",
+    "Key": "Identified as a Vulnerable Adult Y or N must be",
+    "Value": "Identified as a Vulnerable Adult:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Vulnerable Adult",
+    "Key": "Identified as a Vulnerable Adult Y",
+    "Value": "Identified as a Vulnerable Adult:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Vulnerable Adult",
+    "Key": "Identified as a Vulnerable Adult",
+    "Value": "Identified as a Vulnerable Adult:"
+  },
+  {
+    "Comment": "Vision Question Transformation - Vulnerable Adult",
+    "Key": "Identified as a Vulnerable Adult Delete as appropriate:",
+    "Value": "Identified as a Vulnerable Adult:"
+  },
+  {
+    "Comment": "S1 Question Transformation - Vulnerable Adult",
+    "Key": "Identified as a Vulnerable Adult Delete as",
+    "Value": "Identified as a Vulnerable Adult:"
+  },
+  {
+    "Comment": "S1 Question Transformation - Vulnerable Reason",
+    "Key": "Vulnerable Reason (Enter below if appliable):",
+    "Value": "Vulnerable Reason:"
+  },
+  {
+    "Comment": "Question Transformation - Vulnerable Reason",
+    "Key": "Vulnerable Reason (Enter below if applicable):",
+    "Value": "Vulnerable Reason:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Severe mental Illness",
+    "Key": "Severe Mental Illness Y or N must be selected:",
+    "Value": "Severe Mental Illness:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Severe mental Illness",
+    "Key": "Severe Mental Illness",
+    "Value": "Severe Mental Illness:"
+  },
+  {
+    "Comment": "Vision Question Transformation - Severe mental Illness",
+    "Key": "Severe Mental Illness Delete as appropriate:",
+    "Value": "Severe Mental Illness:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Date of Last BMI",
+    "Key": "Date of last BMI (within 24 months):",
+    "Value": "Date of last BMI:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Value of Last BMI",
+    "Key": "Value of last BMI (within 24 months):",
+    "Value": "Value of last BMI:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Mobile No",
+    "Key": "Mobile No:",
+    "Value": "Mobile Tel No:"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Severe mental Illness",
+    "Key": "Severe Mental Illness Y or N must be selected: N",
+    "Value": "Severe Mental Illness:"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "F",
+    "Value": "Female"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "M",
+    "Value": "Male"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "NK",
+    "Value": "Not Known"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "NS",
+    "Value": "Not Specified"
+  },
+  {
+    "Comment": "EMIS Question Transformation - Physical Disability Emis V1.0",
+    "Key": "Physical Disability including any Physical",
+    "Value": "PHYSICAL DISABILITY:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System:EMIS",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System: EMIS",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System:S1",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System: S1",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System:VISION",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System: VISION",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System:DXS",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling",
+    "Key": "System: DXS",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "System identifier handling for documents with no system specified",
+    "Key": "System:",
+    "Value": "DocumentVersion:"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "female",
+    "Value": "Female"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "male",
+    "Value": "Male"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "not known",
+    "Value": "Not Known"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "Not known",
+    "Value": "Not Known"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "not specified",
+    "Value": "Not Specified"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "Not specified",
+    "Value": "Not Specified"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "FEMALE",
+    "Value": "Female"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "MALE",
+    "Value": "Male"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "NOT KNOWN",
+    "Value": "Not Known"
+  },
+  {
+    "Comment": "Gender Question Transformation",
+    "Key": "NOT SPECIFIED",
+    "Value": "Not Specified"
+  },
+  {
+    "Comment": "Temp Diabetes Dropdown Value",
+    "Key": "Diabetes Quality Indicators :",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "no",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "NO",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "None",
+    "Value": "false"
+  },
+  {
+    "Comment": "DXS V1 heading removal",
+    "Key": "NHS Confidential: Personal Data about a patient",
+    "Value": "HEADER:"
+  }
+]

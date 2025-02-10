@@ -1,0 +1,22 @@
+﻿@using WmsHub.Ui.Models
+@using Microsoft.AspNetCore.Http
+
+@{
+	ViewData["Title"] = "Session Ended";
+	Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+	<h1 class="nhsuk-u-margin-bottom-0">
+		Your session has ended due to inactivity
+	</h1>
+	<div class="nhsuk-error-summary__body">
+	  <p>
+		  Your session has ended because you didn't interact with this service for more than 10 minutes.
+	  </p>
+	  <p>For your security if the application was incomplete it will not have been saved.</p>
+	  <p>If you were provided with a text message please use the link in this to access your referral again.</p>
+	</div>
+  </div>
+</div>

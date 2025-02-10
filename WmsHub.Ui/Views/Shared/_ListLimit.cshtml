@@ -1,0 +1,14 @@
+@model System.Int32
+<div class="nhsuk-grid-row">
+  <div class="rmc-list-limit nhsuk-form-group nhsuk-grid-column-one-quarter">
+    <label class="nhsuk-label" for="limit-select">Show</label>
+    <select class="nhsuk-select" id="limit-select" name="limit-select">
+      <option value="25">25</option>
+      <option value="50">50</option>
+      <option value="0">All</option>
+    </select>
+    <label class="nhsuk-label">of @Model</label>
+  </div>
+</div>
+
+<script src="~/js/list_limit.js" defer></script>

@@ -1,0 +1,163 @@
+﻿/* ==========================================================================
+   Pages/ service-user-selection
+   ========================================================================== */
+
+/**
+ * This page contains all the additional styling used for the RMC/ReferralView page
+ */
+
+#rmc-referral-view {
+  /* Styling address inputs to look like text area */
+  .sud-address-container {
+    @include nhsuk-responsive-margin(4, 'bottom');
+
+    .nhsuk-form-group {
+      margin-bottom: 0;
+    }
+
+    .sud-address-1, .sud-address-2, .sud-address-3 {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .sud-address-2, .sud-address-3, .sud-address-4 {
+      border-top: none;
+    }
+  }
+  /* Styling for ethnicity select + button */
+  .referralview-ethnicity {
+    @include mq($from: tablet) {
+      .nhsuk-form-group {
+        display: flex;
+      }
+
+      .referralview-ethnicity-button {
+        position: relative;
+
+        .referralview-ethnicity-button-wrapper {
+          position: absolute;
+          bottom: 0;
+          left: 16px;
+        }
+      }
+    }
+  }
+  /* Styling for Provider selection expander (accordion) */
+  .referralview-provider-detail-box {
+    .nhsuk-details__summary {
+      background-color: $color_nhsuk-blue;
+
+      .nhsuk-details__summary-text {
+        color: $color_nhsuk-white;
+        margin-bottom: 0;
+        @include nhsuk-typography-responsive(22);
+      }
+
+      &:hover {
+        .nhsuk-details__summary-text {
+          color: $color_nhsuk-white;
+        }
+      }
+
+      &:focus {
+        .nhsuk-details__summary-text {
+          color: $color_nhsuk-black;
+        }
+      }
+    }
+
+    .nhsuk-details__text {
+      @include nhsuk-responsive-padding(5, top);
+
+      &[aria-hidden='true'] {
+        visibility: hidden;
+      }
+
+      .referralview-provider-row {
+
+
+        .referralview-provider-logo-wrapper {
+          @include nhsuk-responsive-margin(4, bottom);
+          @include nhsuk-responsive-margin(4, left);
+          float: right;
+          max-width: 25%;
+
+          @include mq($from: tablet, $and: '(orientation: landscape)') {
+            max-width: 128px;
+          }
+
+          .referralview-provider-logo {
+            width: 100%;
+            max-width: 128px;
+            height: auto;
+            max-height: 128px;
+          }
+        }
+
+        .nhsuk-grid-column-one-half {
+          @include nhsuk-responsive-margin(4, bottom);
+        }
+      }
+
+      .referralview-provider-hr {
+        margin-top: 10px;
+      }
+
+      .nhsuk-radios {
+        @include nhsuk-responsive-margin(3, bottom);
+      }
+
+      .referralview-provider-website {
+        @include nhsuk-responsive-margin(5, bottom);
+
+        svg.referralview-provider-web-image {
+          vertical-align: middle;
+
+          .a, .c, .g, .h, .i, .j, .k {
+            fill: none;
+          }
+
+          .a, .b, .c, .d, .e {
+            stroke: #330a70;
+          }
+
+          .a, .d {
+            stroke-width: 2px;
+          }
+
+          .b, .d, .e {
+            fill: #fff;
+          }
+
+          .b, .c {
+            stroke-width: 3px;
+          }
+
+          .f {
+            stroke: none;
+          }
+
+          .h {
+            clip-path: url(#b);
+          }
+
+          .i {
+            clip-path: url(#d);
+          }
+
+          .j {
+            clip-path: url(#f);
+          }
+
+          .k {
+            clip-path: url(#h);
+          }
+        }
+      }
+    }
+  }
+
+  #email_provider_list_to_serviceuser_response {
+    display: block;
+  }
+}

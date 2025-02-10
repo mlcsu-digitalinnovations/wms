@@ -1,0 +1,9 @@
+﻿body {
+}
+
+
+.ui-datepicker-trigger {
+  min-height: 39px;
+  margin-bottom: -13px;
+  margin-left: 10px;
+}

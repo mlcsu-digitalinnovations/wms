@@ -1,0 +1,325 @@
+﻿@using WmsHub.Ui.Models
+@model ProviderSummaryModel
+
+@{
+  ViewData["Title"] = "Provider Summary";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="choose-provider" asp-route-id=@Model.Id>
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back
+  </a>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        <div class="serviceuser-provider-logo-wrapper" style="font-weight: bold; font-size: larger; text-align: left;">
+          <div>
+            <img class="serviceuser-provider-logo" src="@Model.Logo" alt="@Model.ProviderName logo" width="128" height="128" />
+          </div>
+          <h3 style="padding-top:15px;">@Model.ProviderName</h3>
+        </div>
+        @if (Model.IsLiva)
+        {
+          <p>
+            Liva offers a truly personalised experience, designed to help you build lasting healthy habits. You will start the programme with a 30-minute, one-to-one video consultation to meet your chosen health coach. Throughout the programme, you will then receive bespoke support, ensuring that guidance is tailored to your individual needs and goals. Your health coach is your cheerleader, accountability partner, and problem-solver, dedicated to helping you overcome challenges and achieve lasting wellness.
+          </p>
+          <p>
+            Our programmes have helped over 60,000 people lose weight. It's not about quick fixes or strict diets; Liva promotes a flexible, non-diet approach that focuses on the whole person and prioritises building incremental but sustainable behavioural changes and healthy habits such as regular movement, balanced meals, and mindful eating. You can also join a community of people, where you can share experiences, exchange tips, and find inspiration.
+          </p>
+          <p>
+            You will receive personalised video messages from your health coach each week, as well as daily content through our user-friendly app, including recipes, nutrition advice, and tips to increase activity. You can track your progress by creating your own goals. Whether it's establishing new habits or aiming for bigger achievements, our app is designed to support you every step of the way.
+          </p>
+        }
+        @if (Model.IsMoreLife)
+        {
+          <p>
+            My Life Plan is a 12-week online programme which understands that weight loss is not easy. We know that your thoughts, feelings, habits, and past events may be impacting your weight.
+          </p>
+          <p>
+            By joining our psychologically informed programme you will:
+          </p>
+          <u>
+            Have 121 coaching sessions
+          </u>
+          <p>
+            Learn how to develop and keep healthy eating habits. Improve your health and well-being with topics such as sleep and stress management.
+          </p>
+          <u>
+            Coaching
+          </u>
+          <p>
+            We believe in giving REAL-PERSON support. You will speak directly to one of our team for your coaching.
+          </p>
+          <u>
+            Ongoing Support
+          </u>
+          <p>
+            You can WhatsApp your personal coach between sessions if you need advice. You can also join our Facebook groups to hear from others.
+          </p>
+          <u>
+            Education
+          </u>
+          <p>
+            Access videos, podcasts, information sheets and quizzes to learn more about food, exercise, and the psychology of losing weight. You will also learn how to change habits, manage stress, and stop emotional/boredom eating for good (No faddy diets!)
+          </p>
+          <u>
+            Tracking
+          </u>
+          <p>
+            Your &#39;Dashboard&#39; will track your weight loss and weekly goals. You will also have your own Food and Thought diary to understand your habits and how to make positive changes.
+          </p>
+          <u>
+            Accessibility
+          </u>
+          <p>
+            There is a wide range of articles, recipes and exercise videos for all cultures, ages, and genders.
+          </p>
+        }
+        @if (Model.IsOviva)
+        {
+          <p>
+            At Oviva, we&#39;ll empower you to take full control over your health. Our method is simple: make small, effective changes and stick to them. You don&#39;t have to turn your life upside down to lose weight and improve your health.
+          </p>
+          <p>
+            Our programme is flexible, remote and personalised, so you can fit it easily into your life.
+          </p>
+          <p>
+            Over the 12 weeks, you will get regular support from our expert coaching team via the Oviva App, who will help you to set achievable goals, share advice tailored to you and motivate you to stay on track.
+          </p>
+          <p>
+            Alongside this, there are a range of tools in our easy-to-use app to help you succeed:
+          </p>
+          <ul>
+            <li>
+              videos, podcasts, recipes and quizzes
+            </li>
+            <li>
+              simple weight, food and activity logging to track progress.
+            </li>
+            <li>
+              motivational peer group chats
+            </li>
+          </ul>
+          <p>
+            Personalisation is at the heart of what we do, so you will receive learn articles selected just for you, recipes inspired by your preferred cuisine, and tailored feedback on the meals you track in the app.
+          </p>
+          <p>
+            App accessibility is ensured through the use of accessible fonts and sizes (that can be adjusted), transcripts of all audio and compatibility with screen readers.
+          </p>
+          <p>
+            Take control of your health - choose Oviva today!
+          </p>
+        }
+        @if (Model.IsSecondNatureLevel1)
+        {
+          <p>
+            Second Nature helps you lose weight without counting calories or feeling hungry. The holistic approach to weight loss focuses on nutrition, exercise, mindset, sleep, and stress, to help you keep the weight off in the long term and break the &#39;yo-yo&#39; dieting cycle. Eat real food, lose weight, and make lasting healthy changes.
+          </p>
+          <p>
+            Using behavioural science, the app makes it easy for you to form new healthy habits that help you eat better, sleep better, and feel better. The programme focuses on three areas that lead to long-term habit change: tracking, support, and education.
+          </p>
+          <p>
+            You&#39;ll be supported along the way by a small group of other people who are starting their journey at the same time as you. You can message them whenever you like for motivation or advice. The 12-week digital programme takes place entirely within the smartphone app, which is also accessible via a tablet. The daily articles can be translated into different languages.
+          </p>
+          <p>
+            When you sign up for the programme, you receive:
+          </p>
+          <ul>
+            <li>Support from a digital peer group</li>
+            <li>Hundreds of delicious, culturally diverse recipes with videos</li>
+            <li>Daily scientific articles</li>
+            <li>In-app meal planning and journaling tools</li>
+            <li>Steps, weight, and habit tracking technology</li>
+          </ul>
+        }
+        @if (Model.IsSecondNatureLevel3)
+        {
+          <p>
+            Second Nature helps you lose weight without counting calories or feeling hungry. The holistic approach to weight loss focuses on nutrition, exercise, mindset, sleep, and stress, to help you keep the weight off in the long term and break the &#39;yo-yo&#39; dieting cycle. Eat real food, lose weight, and make lasting healthy changes.
+          </p>
+          <p>
+            Using behavioural science, the app makes it easy for you to form new healthy habits - ones that help you eat better, sleep better, and feel better. The programme focuses on three areas that lead to long-term habit change: tracking, support, and education.
+          </p>
+          <p>
+            You&#39;ll receive advice and support from your health coach via online chat. All of the Second Nature health coaches are registered dietitians (the only nutrition professionals regulated by UK law). The 12-week digital programme takes place entirely within the smartphone app, which is also accessible via a tablet. The daily articles can be translated into different languages.
+          </p>
+          <p>
+            When you sign up for the programme, you receive:
+          </p>
+          <ul>
+            <li>Dedicated support from a nutrition professional</li>
+            <li>Support from a digital peer group</li>
+            <li>Hundreds of delicious, culturally diverse recipes with videos</li>
+            <li>Daily scientific articles</li>
+            <li>In-app meal planning and journaling tools</li>
+            <li>Steps, weight, and habit tracking technology</li>
+          </ul>
+        }
+        @if (Model.IsSlimmingWorld)
+        {
+          <p>
+            As a Slimming World Online member, you&#39;ll have access to over 55 years of experience and expertise that&#39;s helped millions of people lose weight and stay slim for life.
+          </p>
+          <p>
+            Following our generous, flexible eating plan, you&#39;ll lose weight eating the foods you love and never go hungry. And we have over 2,000 recipes &#45; tailored to you &#45; to satisfy your appetite!
+          </p>
+          <p>
+            You&#39;ll discover interesting articles and videos, mindset-reset tools, inspirational success stories, progress trackers, plus the Slimming World barcode scanner to help you make great food choices in seconds. Our live member events are part of your membership, too &#45; where we&#39;ll help you overcome stoppers, create brand-new, lifelong habits and boost your motivation, so you lose weight more easily than you ever thought possible!
+          </p>
+          <p>
+            Add in our unique &#39;at your own pace&#39; activity programme (that&#39;s adaptable to any fitness level) for physical and mental wellbeing benefits galore&#133; and we&#39;ll celebrate every weight loss and fitness milestone you achieve.
+          </p>
+          <p>
+            Losing weight online doesn&#39;t have to mean doing it all by yourself. We&#39;ll be there to cheer you on (along with your friends in our community) as you weigh in weekly, reach your dream weight &#45; and hold on to it for life.
+          </p>
+        }
+        @if (Model.IsXylaLevel1)
+        {
+          <p>
+            Wellbeing Way is a personalised weight loss programme that helps you make simple, sustainable changes.
+          </p>
+          <ul>
+            <li>
+              <b>
+                Achievable goals:
+              </b>
+              Based on your current activity levels and dietary/lifestyle preferences, we will guide you in setting realistic goals.
+            </li>
+            <li>
+              <b>
+                Personalised guidance:
+              </b>
+              Our innovative approach offers guidance tailored to your unique health goals. We also offer recipes and exercise plans that cater to cultural dietary and exercise preferences.
+            </li>
+            <li>
+              <b>
+                24/7 support:
+              </b>
+              Our interactive in-app support feature is designed to provide support exactly when you need it most - help is always just a click away.
+            </li>
+            <li>
+              <b>
+                Resources:
+              </b>
+              Covering every aspect of sustainable weight loss, from engaging educational modules, recipes, quizzes, and podcasts to live webinars, exercise videos, and informative blogs - designed to keep you informed, motivated, and on track.
+            </li>
+            <li>
+              <b>
+                Community support:
+              </b>
+              A place where you can share your experiences and exchange tips with people who are on the same journey.
+            </li>
+          </ul>
+          <p>
+            Our programme is designed to fit seamlessly into your lifestyle. We understand that everyone&#39;s journey is different, and we provide support that&#39;s just right for you.
+          </p>
+          <p>
+            Track your progress with ease and celebrate every milestone along the way. Get ready to achieve your goals and embrace a healthier, happier you!
+          </p>
+          <p>
+            Wellbeing Way is available on iOS and Android devices.
+          </p>
+        }
+        @if (Model.IsXylaLevel2)
+        {
+          <p>
+            Wellbeing Way is a personalised weight loss programme that helps you make simple, sustainable changes.
+          </p>
+          <ul>
+            <li>
+              <b>Achievable goals:</b>
+              Based on your current activity levels and dietary/lifestyle preferences, we will guide you in setting realistic goals.
+            </li>
+            <li>
+              <b>
+                Personalised guidance:
+              </b>
+              Our innovative approach offers 1:1 coaching and dedicated support from a nutritional professional, tailored to your unique health goals. We also offer recipes and exercise plans that cater to cultural dietary and exercise preferences.
+            </li>
+            <li>
+              <b>
+                24/7 support:
+              </b>
+              Our interactive in-app support feature is designed to provide support exactly when you need it most - help is always just a click away.
+            </li>
+            <li>
+              <b>
+                Resources:
+              </b>
+              Covering every aspect of sustainable weight loss, from engaging educational modules, recipes, quizzes, and podcasts to live webinars, exercise videos, and informative blogs - designed to keep you informed, motivated, and on track.
+            </li>
+            <li>
+              <b>
+                Community support:
+              </b>
+              A place where you can share your experiences and exchange tips with people who are on the same journey.
+            </li>
+          </ul>
+          <p>
+            Our programme is designed to fit seamlessly into your lifestyle. We understand that everyone&#39;s journey is different, and we provide support that&#39;s just right for you.
+          </p>
+          <p>
+            Track your progress with ease and celebrate every milestone along the way. Get ready to achieve your goals and embrace a healthier, happier you!
+          </p>
+          <p>
+            Wellbeing Way is available on iOS and Android devices.
+          </p>
+        }
+        @if (Model.IsXylaLevel3)
+        {
+          <p>
+            Wellbeing Way is a personalised weight loss programme that helps you make simple, sustainable changes.
+          </p>
+          <ul>
+            <li>
+              <b>
+                Achievable goals:
+              </b>
+              Based on your current activity levels and dietary/lifestyle preferences, we will guide you in setting realistic goals.
+            </li>
+            <li>
+              <b>
+                Personalised guidance:
+              </b>
+              Our innovative approach offers 1:1 coaching and dedicated support from a dietician, tailored to your unique health goals. We also offer recipes and exercise plans that cater to cultural dietary and exercise preferences.
+            </li>
+            <li>
+              <b>
+                24/7 support:
+              </b>
+              Our interactive in-app support feature is designed to provide support exactly when you need it most - help is always just a click away.
+            </li>
+            <li>
+              <b>
+                Resources:
+              </b>
+              Covering every aspect of sustainable weight loss, from engaging educational modules, recipes, quizzes, and podcasts to live webinars, exercise videos, and informative blogs - designed to keep you informed, motivated, and on track.
+            </li>
+            <li>
+              <b>
+                Community support:
+              </b>
+              A place where you can share your experiences and exchange tips with people who are on the same journey.
+            </li>
+          </ul>
+          <p>
+            Our programme is designed to fit seamlessly into your lifestyle. We understand that everyone&#39;s journey is different, and we provide support that&#39;s just right for you.
+          </p>
+          <p>
+            Track your progress with ease and celebrate every milestone along the way. Get ready to achieve your goals and embrace a healthier, happier you!
+          </p>
+          <p>
+            Wellbeing Way is available on iOS and Android devices.
+          </p>
+        }
+      </div>
+    </div>
+  </div>
+</div>

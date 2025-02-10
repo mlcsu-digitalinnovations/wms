@@ -1,0 +1,19 @@
+﻿/* ==========================================================================
+   Components/ rmc-tables
+   ========================================================================== */
+
+/**
+ * This page contains all the additional styling used for the RMC tables
+ */
+
+
+.nhsuk-table-responsive.rmc-table {
+    thead {
+        white-space: pre-line;
+        color: #003087;
+    }
+
+    .rmc-table-ubrn {
+        word-break: break-all;
+    }
+}

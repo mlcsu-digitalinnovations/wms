@@ -1,0 +1,57 @@
+trigger:
+- production
+
+variables:
+- group: wmshub-test-group
+- group: wmshub-build-number
+
+name: $(SourceBranchName)_$(buildMajor).$(buildMinor).$(Date:yyMMdd)$(Rev:.rr)
+
+steps:
+
+- task: PowerShell@2
+  displayName: 'List Environmental Variables'
+  inputs:
+    targetType: 'inline'
+    script: 'dir env:'
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetAuthenticate@1
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '$(projectName)/$(projectName).csproj'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: '$(projectName)/$(projectName).csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run Tests'
+  inputs:
+    command: 'test'
+    projects: 'Tests/$(projectName).Tests/$(projectName).Tests.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(projectName)/$(projectName).csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(artifactName)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(artifactName)'
+    ArtifactName: 'drop$(artifactName)'
+    publishLocation: 'Container'
+

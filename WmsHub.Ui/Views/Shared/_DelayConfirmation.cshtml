@@ -1,0 +1,107 @@
+@using WmsHub.Ui.Models
+@model ReferralListItemModel
+<div id="wms-delay-button" role="button">
+    <div class="wms-delay-button_content">
+        <button class="nhsuk-button nhsuk-button--warning" type="button">
+            Delay
+        </button>
+    </div>
+</div>
+
+<div role="dialog"
+     id="wms-delay-dialog"
+     aria-labelledby="wms-delay-dialog_label"
+     aria-modal="true"
+     class="hidden">
+    <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+            <div class="dialog-header">
+                <h2 id="wms-delay-dialog_label" class="nhsuk-heading-l nhsblue">
+                    Confirm Delay
+                </h2>
+            </div>
+            <div class="dialog-content">
+              <fieldset class="nhsuk-fieldset" aria-describedby="delay-hint" role="group">
+                <legend class="nhsuk-fieldset__legend">
+                  Delay until what date?
+                </legend>
+                <div id="delay-reason-group-date" class="nhsuk-form-group">
+                  <span class="nhsuk-error-message hidden"
+                        id="dateDelayReason-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span>
+                    A delay until date is required.
+                  </span>
+                  <div class="nhsuk-date-input" id="delay">
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label" for="delay-day">
+                          Day
+                        </label>
+                        <input type="hidden" id="hf_delay_day" class="delay_date" />
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                               id="delay-day"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label"
+                               for="delay-month">
+                          Month
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                               id="delay-month"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                    <div class="nhsuk-date-input__item">
+                      <div class="nhsuk-form-group">
+                        <label class="nhsuk-label nhsuk-date-input__label"
+                               for="delay-year">
+                          Year
+                        </label>
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                               id="delay-year"
+                               inputmode="numeric"
+                               type="text" pattern="[0-9]*"
+                               readonly="readonly">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+                <div id="delay-reason-group" class="nhsuk-form-group">
+                  <span class="nhsuk-error-message hidden"
+                        id="txtDelayReason-error">
+                    <span class="nhsuk-u-visually-hidden">Error:</span>
+                    A delay reason of at least 5 characters is required.
+                  </span>
+                  <label class="nhsuk-label nhsuk-date-input__label"
+                         for="txtDelayReason">
+                    Delay Reason
+                  </label>
+                  <textarea cols="1" row="5" id="txtDelayReason" class="nhsuk-textarea" ></textarea>
+                    <br />
+                </div>
+            </div>
+            <button id="cancelDelay" class="nhsuk-button nhsuk-button--secondary" 
+                    type="button">
+                Cancel
+            </button>
+            <button id="submitDelay"
+                    type="submit"
+                    asp-action="ConfirmDelay"
+                    value="Confirm"
+                    name="confirm-delay"
+                    class="nhsuk-button">
+                Confirm
+            </button>
+        </div>
+    </div>
+</div>
+
+

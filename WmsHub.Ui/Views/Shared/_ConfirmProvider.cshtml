@@ -1,0 +1,43 @@
+<input type="hidden" id="selectedProvider" name="selectedProvider" />
+<div id="wms-provider-button" role="button">
+  <div class="wms-provider-button_content">
+    <button class="nhsuk-button"
+      type="button"
+      id="confirmProvider">
+      Confirm Provider
+    </button>
+  </div>
+</div>
+
+<div role="dialog"
+  id="wms-provider-dialog"
+  aria-labelledby="wms-provider-dialog_label"
+  aria-modal="true"
+  class="hidden">
+  <div class="nhsuk-card wms-card">
+    <div class="nhsuk-card__content">
+      <div class="dialog-header">
+        <h2 id="wms-provider-dialog_label" class="nhsuk-heading-l nhsblue">
+          Confirmation Required
+        </h2>
+      </div>
+      <div class="dialog-content">
+        <p id="displayMessage"></p>
+      </div>
+      <button class="nhsuk-button nhsuk-button--secondary"
+              type="button" onclick="closeDialog(this)">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        asp-action="ConfirmProvider"
+        value="Confirm"
+        name="confirm-delay"
+        class="nhsuk-button">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="~/js/views/shared/_ConfirmProvider.js" defer></script>

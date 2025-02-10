@@ -1,0 +1,62 @@
+[
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "no",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "NO",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "None",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "N",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "y",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "n",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Yes",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "yes",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "YES",
+    "Value": "true"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "No",
+    "Value": "false"
+  },
+  {
+    "Comment": "General Conversion of checkbox value",
+    "Key": "Please Select",
+    "Value": "#IGNORE"
+  }
+]

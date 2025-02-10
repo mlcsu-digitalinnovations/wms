@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "WmsHub.AzureFunction.CreateAndSendQuestionnaires": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7050",
+      "launchBrowser": false
+    }
+  }
+}

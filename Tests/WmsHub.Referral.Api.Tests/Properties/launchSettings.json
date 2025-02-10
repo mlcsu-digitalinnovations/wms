@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "WmsHub.Referral.Api.Tests": {
+      "commandName": "Project"
+    }
+  }
+}

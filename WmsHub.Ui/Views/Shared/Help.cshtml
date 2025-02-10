@@ -1,0 +1,31 @@
+﻿@{
+  ViewData["Title"] = "Help";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <h1 class="nhsblue">Help</h1>
+        <p>
+          If you are experiencing any issues with the Referral Hub, please contact the NHS ML Referral Management Centre
+          using the details below.
+        </p>
+        <p>Referral Management Centre Enquiries : <a href="tel:+441772660010">01772 660 010</a></p>
+        @if (Model?.Ubrn != null)
+        {
+          <p>UBRN: @Model.Ubrn</p>
+        }
+        <p>Close this tab to continue with your referral.</p>
+        <button class="nhsuk-button nhsuk-button--primary" id="wms-help-bar-close-tab" type="button">
+          Close this tab
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section scripts {
+  <script src="/js/views/shared/Help.js"></script>
+}

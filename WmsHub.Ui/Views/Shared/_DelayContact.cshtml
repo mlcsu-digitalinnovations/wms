@@ -1,0 +1,41 @@
+@using WmsHub.Ui.Models
+@model ReferralListItemModel;
+
+<div class="nhsuk-grid-row">
+  @if (Model.CanDelay)
+  {
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_DelayConfirmation" />
+    </div>
+  }
+  @if (Model.CanUnableToContact)
+  { 
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_ContactConfirmation" />
+    </div>
+  }
+  @if (Model.CanRejectAfterProviderSelection)
+  {
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_RejectAfterProviderSelectionConfirmation" />
+    </div>
+  }
+  @if (Model.CanRejectBeforeProviderSelection)
+  {
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_RejectBeforeProviderSelectionConfirmation" />
+    </div>
+  }
+  @if (Model.CanRejectToEreferrals)
+  {
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_RejectToEreferralsConfirmation" />
+    </div>
+  }
+  @if (Model.CanAddToCallList)
+  {
+    <div class="nhsuk-grid-column-one-third">
+      <partial name="_AddToRmcCallListConfirmation" />
+    </div>
+  }
+</div>

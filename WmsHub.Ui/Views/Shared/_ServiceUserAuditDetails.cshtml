@@ -1,0 +1,203 @@
+@using WmsHub.Ui.Models
+@model List<ReferralAuditListItemModel>
+
+<fieldset class="nhsuk-fieldset"
+          aria-labelledby="referralview-provider-label">
+  <div class="nhsuk-expander-group">
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+      
+      <details class="nhsuk-details nhsuk-expander 
+               referralview-provider-detail-box">
+        <summary class="nhsuk-details__summary nhsuk-u-padding-0">
+          <span class="nhsuk-details__summary-text">
+            @Model[i].ModifiedAt.ToString("dd/MM/yyyy HH:mm") - Status: @Model[i].Status - User: @Model[i].Username
+          </span>
+        </summary>
+
+        <div class="nhsuk-details__text">
+          <div class="nhsuk-grid-row">
+
+            <div class="nhsuk-grid-column-one-quarter">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">UBRN </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].Ubrn" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-quarter">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">NHS Number </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].NhsNumber" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Date of Referral </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].DateOfReferral" asp-format="{0:dd/MM/yyyy}" />
+              </div>
+            </div>
+          </div>
+
+          <div class="nhsuk-grid-row">
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Given Name </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].GivenName" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Family Name </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].FamilyName" />
+              </div>
+            </div>
+          </div>
+
+          @if (Model[i].WasDelayed)
+          {
+            <div class="nhsuk-grid-row">
+
+              <div class="nhsuk-grid-column-one-half">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label">Delayed </label>
+                  <input class="nhsuk-input disabled" readonly="readonly" 
+                         asp-for="@Model[i].DateToDelayUntil" asp-format="{0:dd/MM/yyyy}" />
+                </div>
+              </div>
+
+              <div class="nhsuk-grid-column-one-half">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label">Reason for delay </label>
+                  <input class="nhsuk-input disabled" readonly="readonly" 
+                         asp-for="@Model[i].DelayReason" />
+                </div>
+              </div>
+            </div>
+          }
+
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-quarter">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Date of Birth </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].DateOfBirth" asp-format="{0:dd/MM/yyyy}" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-quarter">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Status </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].Status" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Status Reason </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].StatusReason" />
+              </div>
+            </div>
+          </div>
+
+
+          @if (Model[i].IsVulnerable ?? false)
+          {
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-one-half">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label">Vulnerable Description </label>
+                  <input class="nhsuk-input disabled" readonly="readonly" 
+                         asp-for="@Model[i].VulnerableDescription" />
+                </div>
+              </div>
+            </div>
+          }
+
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Mobile Number </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].Mobile" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Telephone Number </label>
+                <input class="nhsuk-input disabled" readonly="readonly" 
+                       asp-for="@Model[i].Telephone" />
+              </div>
+            </div>
+          </div>
+
+          <div class="nhsuk-grid-row">
+
+            <div class="nhsuk-grid-column-one-half sud-address-container">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" asp-for="@Model[i].Address1">
+                  Service User Address <span class="nhsuk-u-visually-hidden">
+                    Line 1
+                  </span>
+                </label>
+                <input class="nhsuk-input disabled sud-address-1" 
+                       readonly="readonly" asp-for="@Model[i].Address1" />
+              </div>
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-visually-hidden" 
+                       asp-for="@Model[i].Address2">Address Line 2</label>
+                <input class="nhsuk-input disabled sud-address-2" 
+                       readonly="readonly" asp-for="@Model[i].Address2" />
+              </div>
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-visually-hidden" 
+                       asp-for="@Model[i].Address3">Town </label>
+                <input class="nhsuk-input disabled sud-address-3" 
+                       readonly="readonly" asp-for="@Model[i].Address3" />
+              </div>
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-u-visually-hidden" 
+                       asp-for="@Model[i].Postcode">Postcode</label>
+                <input class="nhsuk-input disabled sud-address-4" 
+                       readonly="readonly" asp-for="@Model[i].Postcode" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Referring GP Practice</label>
+                <input class="nhsuk-input disabled" readonly="readonly"
+                       asp-for="@Model[i].ReferringGpPracticeName" />
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-column-one-half">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label">Email Address</label>
+                <input class="nhsuk-input disabled" readonly="readonly"
+                       asp-for="@Model[i].Email" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    }
+
+  </div>
+</fieldset>
+
+

@@ -1,0 +1,226 @@
+@using WmsHub.Ui.Models
+@model ReferralListItemModel
+
+<input asp-for="IsVulnerable" />
+<input asp-for="IsException" />
+<input type="hidden" asp-for="DateOfReferral" />
+<input type="hidden" asp-for="DateOfBirth" />
+<input type="hidden" asp-for="Id" />
+
+@if(Model.IsProviderSelected)
+{
+  <div class="nhsuk-warning-callout">
+    <h3 class="nhsuk-warning-callout__label">
+      <span role="text">
+        <span class="nhsuk-u-visually-hidden">Important: </span>
+        Provider Selected
+      </span>
+    </h3>
+    @if (Model.IsProviderPreviouslySelected  && Model.CanShowProviders)
+    {
+      <p><strong>@Model.ProviderName</strong> was previously selected for this service user.</p>
+    }
+    else
+    {
+      <p><strong>@Model.ProviderName</strong> has been selected for this service user.</p>
+    }
+    
+  </div>
+}
+
+<div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-one-quarter">
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" asp-for="Ubrn">UBRN </label>
+            <input class="nhsuk-input disabled" id="ubrn_txt" readonly="readonly" asp-for="Ubrn" />
+        </div>
+    </div>
+    
+    <div class="nhsuk-grid-column-one-quarter">
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" asp-for="NhsNumber">NHS Number </label>
+            <input class="nhsuk-input disabled" readonly="readonly" asp-for="NhsNumber" />
+        </div>
+    </div>
+
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="DisplayDateOfReferral">Date of Referral </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="DisplayDateOfReferral"
+        asp-format="{0:dd/MM/yyyy}" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="Ubrn">Provider UBRN </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="ProviderUbrn" />
+    </div>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="GivenName">Given Name </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="GivenName" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="FamilyName">Family Name </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="FamilyName" />
+    </div>
+  </div>
+</div>
+
+@if (Model.HasDelayReason)
+{
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label">Delayed From</label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="DelayFrom" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label">Delayed Until</label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="DelayUntil" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="DelayReason">Reason for delay </label>
+      <textarea cols="1" row="3" class="nhsuk-textarea disabled light-cyan-blue"
+        readonly="readonly">@Model.DelayReason</textarea>
+    </div>
+  </div>
+</div>
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="DisplayDateOfBirth">Date of Birth </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="DisplayDateOfBirth"
+             asp-format="{0:dd/MM/yyyy}" />
+      <partial name="_DateOfBirthUpdate" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="Status">Status </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="Status" />
+      <partial name="_ExceptionOverride" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="StatusReason">Status Reason</label>
+      <textarea rows="5" cols="1" class="nhsuk-input disabled height-65-px"
+        readonly="readonly">@Model.StatusReason</textarea>
+    </div>
+  </div>
+</div>
+
+@if (Model.IsVulnerable)
+{
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" asp-for="VulnerableDescription">Vulnerable Description </label>
+        <input class="nhsuk-input disabled" readonly="readonly" asp-for="VulnerableDescription" />
+      </div>
+    </div>
+  </div>
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="Mobile">Mobile Number </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="Mobile" />
+      <partial name="_MobileNumberUpdate" />
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="Telephone">Telephone Number </label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="Telephone" />
+    </div>
+  </div>
+
+
+</div>
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-one-half sud-address-container">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" asp-for="Address1">
+        Service User Address <span class="nhsuk-u-visually-hidden">
+          Line
+          1
+        </span>
+      </label>
+      <input class="nhsuk-input disabled sud-address-1" readonly="readonly" asp-for="Address1" />
+    </div>
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" asp-for="Address2">Address Line 2</label>
+      <input class="nhsuk-input disabled sud-address-2" readonly="readonly" asp-for="Address2" />
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" asp-for="Address3">Town </label>
+      <input class="nhsuk-input disabled sud-address-3" readonly="readonly" asp-for="Address3" />
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-u-visually-hidden" asp-for="Postcode">Postcode</label>
+      <input class="nhsuk-input disabled sud-address-4" readonly="readonly" asp-for="Postcode" />
+    </div>
+  </div>
+
+  @if (Model.IsPharmacyReferral)
+  {
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" asp-for="ReferringPharmacyOdsCode">Referring Pharmacy ODS Code</label>
+        <input class="nhsuk-input disabled" readonly="readonly" asp-for="ReferringPharmacyOdsCode" />
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" asp-for="ReferringPharmacyEmail">Referring Pharmacy Email</label>
+        <input class="nhsuk-input disabled" readonly="readonly" asp-for="ReferringPharmacyEmail" />
+      </div>
+    </div>
+
+  }
+  else
+  {
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" asp-for="ReferringGpPracticeName">Referring GP Practice</label>
+        <input class="nhsuk-input disabled" readonly="readonly" asp-for="ReferringGpPracticeName" />
+      </div>
+    </div>
+
+  }
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label">Email Address</label>
+      <input class="nhsuk-input disabled" readonly="readonly" asp-for="EmailReadOnly" />
+    </div>
+  </div>
+</div>

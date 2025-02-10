@@ -1,0 +1,44 @@
+trigger:
+- master
+
+variables:
+- group: wmshub-test-group
+- group: wmshub-build-number
+
+name: $(SourceBranchName)_$(buildMajor).$(buildMinor).$(Date:yyMMdd)$(Rev:.rr)
+
+steps:
+- task: PowerShell@2
+  displayName: 'List Environmental Variables'
+  inputs:
+    targetType: 'inline'
+    script: 'dir env:'
+
+- task: NuGetToolInstaller@1
+
+- task: NuGetAuthenticate@1
+
+- task: NuGetCommand@2
+  displayName: 'Restore NuGet Packages'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+- task: VSBuild@1
+  displayName: 'Build'
+  inputs:
+    solution: '**/*.sln'
+    platform: 'Any CPU'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*.Tests.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    codeCoverageEnabled: true

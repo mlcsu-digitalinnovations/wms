@@ -1,0 +1,36 @@
+﻿@{
+  ViewData["Title"] = "Referral cancelled";
+  Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" 
+         role="alert" tabindex="-1">
+      <h1 class="nhsuk-error-summary__title" id="error-summary-title">
+        Your referral has now been cancelled because your BMI is too low
+      </h1>
+      <div class="nhsuk-error-summary__body">
+        <p>
+          We’re pleased to tell you that your BMI is not within the obesity 
+          range. This means you are not eligible for the NHS Digital Weight 
+          Management Programme. However, please visit 
+          <a href="https://www.nhs.uk/better-health/" target="_blank">
+            NHS Better Health
+          </a>
+          for all the latest advice and apps to help you continue your health 
+          and wellbeing journey.
+        </p>
+        <p>
+          A person’s BMI needs to be 30 or over (or 27.5 and over for people 
+          from black, Asian and minority ethnic backgrounds) to be eligible for 
+          the NHS Digital Weight Management Programme. The BMI threshold is 
+          lower for people from these backgrounds because they are at a higher 
+          risk of developing conditions such as type 2 diabetes at a lower BMI.
+        </p>
+        <ul class="nhsuk-list nhsuk-error-summary__list">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

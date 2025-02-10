@@ -1,0 +1,377 @@
+@using WmsHub.Ui.Models
+@model ReferralListItemModel
+
+<input type="hidden" asp-for="ActiveUser" />
+<div class="nhsuk-grid-row" id="rmc-referral-view">
+  <div class="nhsuk-grid-column-full">
+    <h3>Manage Service User Referral</h3>
+  </div>
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        @if (!ViewContext.ViewData.ModelState.IsValid)
+        {
+          <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+            <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+              There was a problem.
+            </h2>
+            <div class="nhsuk-error-summary__body">
+              @foreach(string error in ViewData.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage))
+              {
+                <p>@error</p>
+              }
+            </div>
+          </div>
+        }
+        <form method="post" asp-controller="Rmc" asp-action="ReferralView" id="referralForm">
+          <input type="hidden" asp-for="StatusReason" />
+          <input type="hidden" asp-for="DelayReason" />
+          <input type="hidden" asp-for="DelayUntil" />
+          <input type="hidden" asp-for="MaxDateToDelay" asp-format="{0:dd/MM/yyyy}" />
+          <input type="hidden" asp-for="MaxDaysToDelay" />
+          <input type="hidden" asp-for="MinGpReferralAge" />
+          <input type="hidden" asp-for="MaxGpReferralAge" />
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-full">
+              <partial name="_ServiceUserDetails" />
+            </div>
+          </div>
+          @if (Model.CanConfirmEmail)
+          {
+            <div class="nhsuk-grid-row referralview-email">
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-6">
+
+                  <label class="nhsuk-label" asp-for="Email">Service User Email Address:</label>
+
+                  <span class="nhsuk-error-message" id="email-error">
+                    A valid email address is required
+                  </span>
+                  <input type="email"
+                  class="nhsuk-input nhsuk-u-width-two-thirds"
+                  asp-for="Email" />
+                </div>
+
+                <div class="nhsuk-grid-column-one-half referralview-ethnicity-button">
+                  <div class="referralview-ethnicity-button-wrapper">
+                    <input type="submit"
+                    id="confirmEmail"
+                    asp-action="ConfirmEmail"
+                    value="Confirm Email"
+                    class="nhsuk-button nhsuk-u-margin-bottom-6" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          @if (Model.CanConfirmEthnicity && Model.HasEmail && !Model.IsElectiveCareReferral)
+          {
+            <div id="div-select-ethnicity" class="nhsuk-grid-row referralview-ethnicity">
+              <div class="nhsuk-form-group">
+                <div class="nhsuk-grid-column-one-third nhsuk-u-margin-bottom-6">
+
+                  <label class="nhsuk-label" asp-for="SelectedServiceUserEthnicityGroup">Service User Ethnicity Group</label>
+                  <div class="nhsuk-hint" id="select-2-hint">
+                    Select Service User Ethnicity Group
+                  </div>
+                  <select class="nhsuk-select"
+                  asp-for="SelectedServiceUserEthnicityGroup"
+                  asp-items="Model.ServiceUserEthnicityGroupList">
+                    <option value="">Select Ethnicity Group</option>
+                  </select>
+                </div>
+                <div class="nhsuk-grid-column-one-third nhsuk-u-margin-bottom-6">
+                  <label class="nhsuk-label" asp-for="SelectedServiceUserEthnicity">Service User Ethnicity</label>
+                  <div class="nhsuk-hint" id="select-3-hint">
+                    Select Service User Ethnicity
+                  </div>
+                  <select class="nhsuk-select" 
+                  asp-for="SelectedServiceUserEthnicity"
+                  asp-items="Model.ServiceUserEthnicityList">
+                    <option value="">Select Ethnicity</option>
+                  </select>
+                </div>
+
+                <div class="nhsuk-grid-column-one-third referralview-ethnicity-button">
+                  <div class="referralview-ethnicity-button-wrapper">
+                    <input type="submit"
+                    asp-action="ConfirmEthnicity"
+                    value="Confirm Ethnicity"
+                    class="nhsuk-button nhsuk-u-margin-bottom-6"
+                    id="confirmEthnicity" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          @if (Model.IsBmiTooLow)
+          {
+            <div id="BmiTooLowMessage">
+              <p class="warning">
+                The service user's BMI of @Model.Bmi is below the minimum of
+                @Model.SelectedEthnicGroupMinimumBmi for the selected
+                ethnic group of @Model.SelectedEthnicity.
+                A service user's BMI needs to be 30 or over (or 27.5 and over for
+                people from black, Asian and minority ethnic backgrounds) to be
+                eligible for the NHS Digital Weight Management Programme. The
+                BMI threshold is lower for people from these backgrounds because
+                they are at a higher risk of developing conditions such as type
+                2 diabetes at a lower BMI.
+              </p>
+            </div>
+          }
+
+          @if(Model.CanSendElectiveCareLink)
+          {
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-one-half">
+                <h2 class="nhsuk-heading-xs nhsblue" id="referralview-electivecare-info-label">
+                  Elective Care users must select a provider via the Service User UI
+                </h2>
+              </div>
+
+              <div class="nhsuk-grid-column-one-half">
+                <div>
+                  <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-one-half">
+                      <button class="nhsuk-button" id="email_elective_care_link" alt="Email elective care hub link to service user">
+                        Email link to service user
+                      </button>
+                    </div>
+                    <div class="nhsuk-grid-column-one-half">
+                      <span id="elective_care_link_loading_icon" style="display: none;">
+                        <img src="/images/spinner.gif" alt="Loading..." width="50" height="50" />
+                      </span>
+                    </div>
+                  </div>
+                  <span class="display-block" id="email_elective_care_link_to_serviceuser_response"></span>
+                </div>
+              </div>
+            </div>
+          }
+
+          @if (Model.CanShowProviders && Model.HasProviders && Model.HasEmail && !Model.IsBmiTooLow
+            && Model.HasServiceUserEthnicityAndServiceUserEthnicityGroup
+            && !Model.IsElectiveCareReferral)
+          {
+            <div id="div-providers" class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <fieldset class="nhsuk-fieldset nhsuk-u-padding-bottom-6"
+                        aria-labelledby="referralview-provider-label">
+                  <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-one-half">
+                      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                        <h2 class="nhsuk-fieldset__heading" id="referralview-provider-label">
+                          Select Provider
+                        </h2>
+                      </legend>
+                    </div>
+
+                    <div class="nhsuk-grid-column-one-half">
+                      
+                      <div class="wms-provider-button_content">
+                        <div class="nhsuk-grid-row">
+                          <div class="nhsuk-grid-column-one-half">
+                            <button class="nhsuk-button forward_as_email" id="email_provider_list" alt="Email provider details to service user">
+                              <span id="button_text">Email provider details to service user</span>
+                            </button>
+                          </div>
+                          <div class="nhsuk-grid-column-one-half">
+                            <span id="loading_icon" style="display: none;">
+                              <img src="/images/spinner.gif" alt="Loading..." width="50" height="50" />
+                            </span>
+                          </div>
+                        </div>
+                        <span id="email_provider_list_to_serviceuser_response">
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="nhsuk-form-group">
+                    <div class="nhsuk-expander-group" id="serviceProviders">
+
+                      @foreach (var provider in Model.Providers)
+                      {
+                        <details class="nhsuk-details nhsuk-expander referralview-provider-detail-box">
+                          <summary class="nhsuk-details__summary">
+                            <h2 class="nhsuk-details__summary-text">
+                              @provider.Name
+                            </h2>
+                          </summary>
+                          <div class="nhsuk-details__text">
+
+                            @* Summary *@
+                            <div class="nhsuk-grid-row referralview-provider-row">
+                              <div class="nhsuk-grid-column-full">
+                                @if (provider.Logo != null)
+                                {
+                                  <div class="referralview-provider-logo-wrapper">
+                                    <img class="referralview-provider-logo" src="@provider.Logo" alt="@provider.Name logo" width="128" height="128" />
+                                  </div>
+                                }
+                                <p>@Html.Raw(@provider.Summary)</p>
+                              </div>
+                            </div>
+
+                            <hr class="referralview-provider-hr" />
+
+                            @* Radio button *@
+                            <div class="nhsuk-grid-row">
+                              <div class="nhsuk-grid-column-one-half">
+                                <div class="nhsuk-form-group">
+
+                                  <fieldset class="nhsuk-fieldset" aria-describedby="hint-@provider.Id">
+                                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                      Use this service?
+                                    </legend>
+
+                                    <div class="nhsuk-hint" id="hint-@provider.Id">
+                                      Click the button below to select this service.
+                                    </div>
+
+                                    <div class="nhsuk-radios">
+                                      <div class="nhsuk-radios__item">
+                                        <input type="radio"
+                                           asp-for="ProviderId"
+                                           value="@provider.Id"
+                                           id="Provider@(provider.Id)"
+                                           class="nhsuk-radios__input"
+                                           role="radio"
+                                           data-provider-Name="@provider.Name"
+                                           aria-expanded="true">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="Provider@(provider.Id)">
+                                          Select @provider.Name
+                                        </label>
+                                      </div>
+                                    </div>
+
+                                  </fieldset>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </details>
+                      }
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-checkboxes nhsuk-checkboxes--conditional">
+                    <div class="nhsuk-checkboxes__item">
+                      <input type="checkbox"
+                           class="nhsuk-checkboxes__input"
+                           id="CanContact"
+                           asp-for="ConsentForFutureContactForEvaluation" />
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="CanContact">
+                        Patient agrees to be contacted by NHS England and Improvement about future surveys
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="nhsuk-grid-row nhsuk-u-padding-bottom-6">
+              <div class="nhsuk-grid-column-one-half">
+                <partial name="_ConfirmProvider" />
+              </div>
+            </div>
+          }
+          @if(!Model.IsElectiveCareReferral)
+          {
+            <partial name="_DelayContact" />
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="email_history_container" style="display: none;">
+    <div class="nhsuk-grid-column-one-half">
+      <h3>Email History</h3>
+    </div>
+    <div class="nhsuk-grid-column-one-half text-align-right">
+      <span id="email_history_loading_icon">
+        <img src="/images/spinner.gif" alt="Loading..." width="50" height="50"/>
+      </span>
+      <button class="nhsuk-button" id="refresh_email_history_button" alt="Refresh email history" style="display: none;">
+        <span id="refresh_email_history_button_text">Refresh email history</span>
+      </button>
+    </div>
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-card wms-card">
+        <div class="nhsuk-card__content">
+          <span id="email_history_message" style="display: none;"></span>
+          <table class="nhsuk-table-responsive" id="email_history_table" style="display: none;">
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" scope="col">Email</th>
+                <th role="columnheader" scope="col">Created</th>
+                <th role="columnheader" scope="col">Sending</th>
+                <th role="columnheader" scope="col">Delivered</th>
+                <th role="columnheader" scope="col">Status</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-half">
+    <h3>Service User History</h3>
+  </div>
+  <div class="nhsuk-grid-column-one-half text-align-right">
+    <button class="nhsuk-button" id="show_email_history_button" alt="Show email history">
+      <span id="show_email_history_button_text">Show email history</span>
+    </button>
+  </div>
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+        @if (Model.HasAuditList)
+        {
+          <partial name="_ServiceUserAuditDetails" model="Model.AuditList" />
+        }
+      </div>
+    </div>
+  </div>
+  @if (Model.IsException && Model.HasAuditGroupList)
+  {
+    <div class="nhsuk-grid-column-full">
+      <h3>Previous Referral Service User History</h3>
+    </div>
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-card wms-card">
+      <div class="nhsuk-card__content">
+
+          @foreach (KeyValuePair<Guid, IEnumerable<ReferralAuditListItemModel>> kvp in Model.GroupedAuditList.PastItems)
+          {
+            <partial name="_ServiceUserAuditDetails" model="kvp.Value" />
+          }
+        
+      </div>
+    </div>
+  </div>
+  }
+</div>
+
+@section scripts{
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.min.css" integrity="sha512-F8mgNaoH6SSws+tuDTveIu+hx6JkVcuLqTQ/S/KJaHJjGc8eUxIrBawMnasq2FDlfo7FYsD8buQXVwD+0upbcA==" crossorigin="anonymous">
+  <link rel="stylesheet" href="~/css/jquer.local.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js" integrity="sha512-7SRCYIJtR6F8ocwW7UxW6wGKqbSyqREDbfCORCbGLatU0iugBLwyOXpzhkPyHIFdBO0K2VCu57fvP2Twgx1o2A==" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.min.js" integrity="sha512-MlEyuwT6VkRXExjj8CdBKNgd+e2H+aYZOCUaCrt9KRk6MlZDOs91V1yK22rwm8aCIsb5Ec1euL8f0g58RKT/Pg==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="~/js/views/shared/_DateOfBirthUpdate.js"></script>
+  <script type="text/javascript" src="~/js/views/shared/_ExceptionOverride.js"></script>
+  <script type="text/javascript" src="~/js/views/shared/_MobileNumberUpdate.js"></script>
+  <script type="text/javascript" src="~/js/views/shared/_DelayConfirmation.js"></script>
+  <script type="text/javascript" src="~/js/views/rmc/referral-view.js"></script>  
+  <script type="text/javascript" src="~/js/referralview_signalr.js"></script>  
+  <script type="text/javascript" src="~/js/utils.js"></script>
+  <script type="text/javascript" src="~/js/accessible_modal.js"></script>
+  <script type="text/javascript" src="~/js/views/shared/_RejectionConfirmation.js" defer></script>
+}

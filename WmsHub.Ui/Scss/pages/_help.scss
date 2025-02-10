@@ -1,0 +1,5 @@
+﻿body:not(.js-enabled) {
+    button#wms-help-bar-close-tab {
+        display: none;
+    }
+}

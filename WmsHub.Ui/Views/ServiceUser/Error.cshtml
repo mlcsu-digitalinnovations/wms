@@ -1,0 +1,31 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+            <h1 class="nhsuk-error-summary__title" id="error-summary-title">
+                We have encountered an error
+            </h1>
+            <div class="nhsuk-error-summary__body">
+                <p>
+                    Please try again later or if error persists please contact the NHS ML Referral Management Centre using the details below. Referral Management Centre Enquiries : <a href="tel:+441772660010">01772 660 010</a>
+                </p>
+                <ul class="nhsuk-list nhsuk-error-summary__list">
+
+                    @*<li>@Model.Message</li>
+
+                    @if (Model.ShowRequestId)
+                    {
+                        <li>
+                            <strong>Request ID:</strong> <code>@Model.RequestId</code>
+                        </li>
+                    }*@
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

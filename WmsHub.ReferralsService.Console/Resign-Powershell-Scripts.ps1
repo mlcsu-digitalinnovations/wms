@@ -1,0 +1,46 @@
+# ReSign all powershell scripts in the current directory
+
+$cert = Get-ChildItem Cert:\CurrentUser\My\* | where{$_.Subject -eq 'CN=file-signing'}
+
+if ($cert -eq $null) {
+  Write-Error "In order to use this script you will need to have the file-signing certificate in your Current User\Personal\Certificates store."
+} else {
+  Get-ChildItem "." -Filter *.ps1 | Foreach-Object {
+    Set-AuthenticodeSignature -FilePath $_ -Certificate $cert
+  }
+}
+
+# SIG # Begin signature block
+# MIIF0wYJKoZIhvcNAQcCoIIFxDCCBcACAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
+# gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUEwZC045Uez3Ne3q5dixN5QEM
+# b3OgggMiMIIDHjCCAgagAwIBAgIUMoK+MFFeWZ0khSY9veeDMKDpkgQwDQYJKoZI
+# hvcNAQELBQAwYjELMAkGA1UEBhMCR0IxFjAUBgNVBAgMDVN0YWZmb3Jkc2hpcmUx
+# EjAQBgNVBAoMCU5IUyBNTENTVTEMMAoGA1UECwwDRElVMRkwFwYDVQQDDBBESVUg
+# TUxDU1UgTkhTIENBMB4XDTI0MDYxMTEzNTUyNVoXDTI5MDYxMDEzNTUyNVowFzEV
+# MBMGA1UEAwwMZmlsZS1zaWduaW5nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+# CgKCAQEAteHNVq0Cc6BbX+/OvKz6Bqqbj+Xd+Q4HJX8Ml05nIu07x6zkdpCfhzJl
+# yPfgwrt8Z1WarmMo1kBneLnWa3F+6PAFS8Vx6d6QksiYqRkVzbsiCyo4GBLqdGjI
+# 0W+Lwb62SUaGtFSfrEHZaPuPgXiI1bI/fmJJ3BIvhO1/CMn9KF4g/E4z3ZJkIh93
+# r2kKLvtzkdDze8ueHRzTLyi3uOdP7QZZFbVUbFGjnPoQT4HxB5RkGeZ9QkV7PKv1
+# AE4R+GL3XoKkiA4r0nUG4PquHgu0b0rZGdXzU1zolID8Ju4VR3gw4yGDszx4VuAI
+# 5a0iORoGw6T/Ip7/lJ+95FM+bIA/9QIDAQABoxcwFTATBgNVHSUEDDAKBggrBgEF
+# BQcDAzANBgkqhkiG9w0BAQsFAAOCAQEAjZcnfd0Or0f31jqIk6N+VEAKYGLFHu2N
+# iL/UyW8bn63jUQwyV9jogv6vUIBV8CB2HPZsZy+8cKIiAYk6yHJzh9h0c7WT7LlE
+# ksbvk/xd/9G9jANsYTHclDyiUZ6vdgkyZRUoEZXCSduuEiYUbaYOqGo0uNDN7Akq
+# Dp8wVj26yFRe1GYoKwsmrG62Am3UwYuLg4Z3lnvKIbtNWLRrMG/JyEAK7++N0KlI
+# 0cH7wm71Hb8vT9fC4pnXE3Tu6Z8Z82Mo+bbIPPmyg5Xp1CH8FLVFQ3Ga0PmU5NIS
+# 3AurmFF/0K1upHnb6U3jVl2zN1qkJwllv0qEyfkZiPXwE3J5iwWGOjGCAhswggIX
+# AgEBMHowYjELMAkGA1UEBhMCR0IxFjAUBgNVBAgMDVN0YWZmb3Jkc2hpcmUxEjAQ
+# BgNVBAoMCU5IUyBNTENTVTEMMAoGA1UECwwDRElVMRkwFwYDVQQDDBBESVUgTUxD
+# U1UgTkhTIENBAhQygr4wUV5ZnSSFJj2954MwoOmSBDAJBgUrDgMCGgUAoHgwGAYK
+# KwYBBAGCNwIBDDEKMAigAoAAoQKAADAZBgkqhkiG9w0BCQMxDAYKKwYBBAGCNwIB
+# BDAcBgorBgEEAYI3AgELMQ4wDAYKKwYBBAGCNwIBFTAjBgkqhkiG9w0BCQQxFgQU
+# Ta+j90dpCaF4BR2tSk2j7hzVXtswDQYJKoZIhvcNAQEBBQAEggEAlHc4ZVhQ8as3
+# g+CEdndEFtlMvH58BTptbV/hY/u4VqNQZOFkxjVBjEWvNusoyXZ/9RInfSIk/uCv
+# 9NMrdaO38T5uIbPfv3EPAmAZYkzpVGr39V6bPajn7+lc3plO7tfBMiG5xZhZ+APf
+# pY5v133qQKd8WFWm0N9SnbhgEaxT2ELSna7tHT8ux1OvlPTbqULaYoMAvsAIDasd
+# 2FdWRBrfY9M3sdh7QuAs1r929LjKeyufpusMPyybWxLp/bzX5HOprggF4BTldJzI
+# O0953AjL5bvgXeFL/5kRIJfje7eWSuUgh4A6SDdTM2I7q+S1lChH1QhQft+KUCv2
+# cLQwQUVOTg==
+# SIG # End signature block

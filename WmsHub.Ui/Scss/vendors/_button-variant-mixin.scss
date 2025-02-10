@@ -1,0 +1,90 @@
+﻿/// <reference path="../../node_modules/nhsuk-frontend/packages/core/settings/all.scss" />
+/// <reference path="../../node_modules/nhsuk-frontend/packages/core/tools/all.scss" />
+/// <reference path="../../node_modules/nhsuk-frontend/packages/components/button/button.scss" />
+// This mixin allows custom colour variants using NHSUK style buttons
+// Pass in the background colour you wish to use and if the background colour is light true/false
+// If true, dark text colour will be used. If flase, white will be used
+
+@mixin nhsuk-style-button-variant($background-color, $light-background: true) {
+    $text-color: $nhsuk-button-text-color;
+
+    @if $light-background {
+        $text-color: $nhsuk-reverse-button-text-color;
+    }
+    @else {
+        $text-color: $nhsuk-button-text-color;
+    }
+
+    background-color: $background-color;
+    box-shadow: 0 $button-shadow-size 0 shade($background-color, 50%);
+    color: $text-color;
+
+    &:hover {
+        background-color: darken($background-color, 10%);
+
+        @if $light-background {
+            $text-color: $nhsuk-reverse-button-text-color;
+        }
+    }
+
+    &:focus {
+        background: $nhsuk-focus-color;
+        box-shadow: 0 $button-shadow-size 0 $nhsuk-focus-text-color;
+        color: $nhsuk-focus-text-color;
+        outline: $nhsuk-focus-width solid transparent;
+    }
+
+    &:active {
+        background: shade($background-color, 50%);
+        box-shadow: none;
+        color: $nhsuk-button-text-color;
+        top: $button-shadow-size;
+    }
+
+    &.nhsuk-button--disabled {
+        background-color: $background-color;
+    }
+}
+
+//
+// Close button mixin
+// used to close a content area
+//
+// Usage: @include close-button();
+// See components/header
+//
+// 1. Custom height and width of form items
+// 2. Custom height and width of svg icons
+// 3. Remove inner border on buttons for Firefox, see
+//    https://github.com/necolas/normalize.css/issues/393
+//
+
+@mixin close-button() {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  height: 40px; // [1] //
+  padding: 0;
+  width: 40px; // [1] //
+
+  .nhsuk-icon__close {
+    fill: $color_nhsuk-blue;
+    height: 40px; // [2] //
+    width: 40px; // [2] //
+  }
+
+  &::-moz-focus-inner {
+    border: 0; // [3] //
+  }
+
+  &:hover {
+    .nhsuk-icon__close {
+      fill: $nhsuk-secondary-button-hover-color;
+    }
+  }
+
+  &:focus {
+    @include nhsuk-focused-text;
+  }
+}
+

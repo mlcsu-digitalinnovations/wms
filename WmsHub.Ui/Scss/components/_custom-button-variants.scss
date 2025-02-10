@@ -1,0 +1,32 @@
+﻿/// <reference path="../../node_modules/nhsuk-frontend/packages/core/settings/all.scss" />
+/// <reference path="../../node_modules/nhsuk-frontend/packages/core/tools/all.scss" />
+/// <reference path="../vendors/all.scss" />
+
+.nhsuk-button--warning {
+    @include nhsuk-style-button-variant(#ffc107, true);
+}
+
+.nhsuk-button--danger {
+    @include nhsuk-style-button-variant($color_nhsuk-red, false);
+}
+
+.wms-mobile-number-button_content,
+.wms-date-of-birth-button_content,
+.wms-exception-override-button_content {
+  position: relative;
+}
+
+.exception-override-button,
+.date-of-birth-button,
+.mobile-number-button {
+  position: absolute;
+  right: 0px;
+  height: 35px;
+  padding-top: 3px;
+  top: -39px !important;
+  border-radius: 0;
+
+  &:active {
+    top: -39px !important;
+  }
+}

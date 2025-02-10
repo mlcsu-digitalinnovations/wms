@@ -1,0 +1,13 @@
+﻿//NHS Front End Library
+@import '../node_modules/nhsuk-frontend/packages/nhsuk.scss';
+
+//Custom SCSS
+@import 'vendors/all';
+
+@import 'base/all';
+
+@import 'components/all';
+
+@import 'layout/all';
+
+@import 'pages/all';

@@ -1,0 +1,344 @@
+@using WmsHub.Ui.Models
+@model ProviderChoiceModel
+
+@{
+    ViewData["Title"] = "Choose Your Provider";
+    Layout = "~/Views/Shared/_BasicLayout.cshtml";
+}
+
+<input type="hidden" asp-for="DisplayError" />
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" asp-controller="ServiceUser" asp-action="contact-preference" asp-route-id=@Model.Id>
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-full">
+		<div class="nhsuk-card wms-card">
+			<div class="nhsuk-card__content">
+        <div class="nhsuk-error-summary hidden" id="error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+          <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="nhsuk-error-summary__body">
+            <ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+              <li>
+                <a href="#select-provider-0">Make your selection</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <form method="post"
+              asp-controller="ServiceUser"
+              asp-action="Choose-Provider"
+              asp-route-id="@Model.Id">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading" id="serviceuser-provider-label">
+              Choose your provider
+            </h1>
+          </legend>
+          <div class="nhsuk-grid-row nhsuk-details" style="background: white; color: black; padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="padding: 10px; font-weight: bold;">
+              The NHS Digital Weight Management Programme is a 12-week lifestyle and behavioural plan to support you to manage your weight and improve your health.
+              The information below allows you to compare some aspects of the weight management plans available.
+              You can click on the name of the provider to find out more about them.
+            </div>
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="padding: 10px; font-weight: bold;">
+              Choose and select the one that&#39;s right for you.
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="align-items: center; text-align: center; top: 0; position: sticky; background: white; color: black; padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                <a asp-controller="ServiceUser" asp-action="provider-summary" asp-route-id=@Model.Id asp-route-providerId="@provider.Id">
+                  <div class="serviceuser-provider-logo-wrapper">
+                    <img class="serviceuser-provider-logo" src="@provider.Logo" alt="@provider.Name logo" width="64" height="64" />
+                  </div>
+                    @provider.Name
+                </a>
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              How to access the programme
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Mobile App
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+              @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.MobileApp))
+              {
+                <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                  <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                        stroke="#007f3b"></path>
+                </svg>
+              }
+              else
+              {
+                <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                  <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                        fill="#d5281b"></path>
+                  <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                        fill="#d5281b"></path>
+                </svg>
+              }
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Website
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.Website))
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                    <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                          stroke="#007f3b"></path>
+                  </svg>
+                }
+                else
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                  </svg>
+                }
+              </div>
+            }
+          </div>
+          @if (Model.ShowCoachingSection)
+          {
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+                Coaching method - this is how each plan will deliver tailored coaching to you
+              </div>
+            </div>
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+                Main way coaching is delivered
+              </div>
+            </div>
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              @foreach(Provider provider in Model.Providers)
+              {
+                <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center; font-size: 19px">
+                  @provider.GetDetailSectionValue(Provider.StringDetailSections.MainCoaching)
+                </div>
+              }
+            </div>
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+                Other ways coaching is delivered
+              </div>
+            </div>
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              @foreach (Provider provider in Model.Providers)
+              {
+                <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center; font-size: 19px">
+                  @provider.GetDetailSectionValue(Provider.StringDetailSections.OtherCoaching)
+                </div>
+              }
+            </div>
+          }
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Accessibility features
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Screen reader
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.ScreenReader))
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                    <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                          stroke="#007f3b"></path>
+                  </svg>
+                }
+                else
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                  </svg>
+                }
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              On screen keyboard
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.OnScreenKeyboard))
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                    <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                          stroke="#007f3b"></path>
+                  </svg>
+                }
+                else
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                  </svg>
+                }
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Audio description
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.AudioDescription))
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                    <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                          stroke="#007f3b"></path>
+                  </svg>
+                }
+                else
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                  </svg>
+                }
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Ability to change size of text
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center;">
+                @if (provider.GetDetailSectionValue(Provider.BooleanDetailSections.ChangeTextSize))
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" fill="none" aria-hidden="true" width="34" height="34">
+                    <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                          stroke="#007f3b"></path>
+                  </svg>
+                }
+                else
+                {
+                  <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" aria-hidden="true" width="34" height="34">
+                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                          fill="#d5281b"></path>
+                  </svg>
+                }
+              </div>
+            }
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; font-weight: bold; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full nhsuk-u-full" style="font-weight: bold; font-size: 19px">
+              Length of time you will have access to the resources once you&#39;ve completed your 12-week plan
+            </div>
+          </div>
+          <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+            @foreach (Provider provider in Model.Providers)
+            {
+              <div class="nhsuk-grid-column-one-third nhsuk-u-one-third" style="text-align: center; font-size: 19px">
+                @provider.GetDetailSectionValue(Provider.StringDetailSections.AccessLength)
+              </div>
+            }
+          </div>
+          <div class="nhsuk-u-padding-bottom-4"></div>
+          <div class="nhsuk-form-group" id="select-provider-form-group">
+            <div class="nhsuk-grid-row" style="padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              <div class="nhsuk-grid-column-full" style="font-weight: bold;">
+                <p id="select-provider-prompt">Make your selection</p>
+              </div>
+            </div>
+            <div class="nhsuk-grid-row" style="text-align: center; padding: 10px 0px 10px 0px; border-bottom: solid; border-bottom-width: thin; border-bottom-color: #d8dde0">
+              @for (int i = 0; i < Model.Providers.Count; i++)
+              {
+                <input type="hidden" name="Providers[@i].Name" value="@Model.Providers[i].Name" />
+                <input type="hidden" name="Providers[@i].Id" value="@Model.Providers[i].Id" />
+                <div class="nhsuk-grid-column-one-third nhsuk-u-full">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="select-provider-@i" asp-for="ProviderId" type="radio" value="@Model.Providers[i].Id">
+                    <label class="nhsuk-label nhsuk-radios__label" for="select-provider-@i">
+                      @Model.Providers[i].Name
+                    </label>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+          <div class="nhsuk-u-padding-bottom-4"></div>
+          <div class="nhsuk-grid-row" style="border-bottom-color: #d8dde0">
+            <div class="nhsuk-grid-column-full" style="text-align: center;">
+              <button class="nhsuk-button" id="save-button" type="button" data-prevent-double-click="true" data-module="nhsuk-button">
+                Save and continue
+              </button>
+            </div>
+          </div>
+        </form>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts {
+  <script src="~/js/views/service-user/WmsSelection.js"></script>
+}
