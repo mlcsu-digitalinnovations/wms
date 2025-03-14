@@ -1,85 +1,19 @@
-# Weight Management System
+# WMS
 
-## Environmental Variables
+WMS consists of several web site and API projects that form the backbone of the Digital Weight Management Hub.
 
-### If using Always Encrypted with an Azure KeyStore
-WmsHub_AlwaysEncrypted:ClientId
-WmsHub_AlwaysEncrypted:ClientSecret
-WmsHub_AlwaysEncrypted:IsEnabled
-WmsHub_AlwaysEncrypted:TenantId
+- WmsHub.BusinessIntelligence.Api - Supplies anonymised reporting data. Scheduled for sunsetting in Q2 2025.
+- WmsHub.ChatBot.Api - API to chat bot supplier uploading call information and receiving call outcomes.
+- WmsHub.ErsMock.Api - Mock eRS API used for local Alpha testing.
+- WmsHub.Provider.Api - API to programme providers enabling retrieve of referral information and service user updates whilst engaged on the programme.
+- WmsHub.Referral.Api - API for eRS interface and [additional UIs](https://github.com/mlcsu-digitalinnovations/wms-additional-ui) to manage referrals.
+- WmsHub.ReferralsService.Console - Interface to national e-Referral System enabling download of GP referral letters.
+- WmsHub.TextMessage.Api - API to SMS supplier uploading text message informaiton and receiving outcomes.
+- WmsHub.Ui - Two websites, one for the referral management team to manage in progress referrals and the service user UI enabling users to complete their referral and choose a provider. 
 
-### Business intelligence API
-WmsHub_BusinessIntelligence_Api_ApiKey
+## Authors
+Midlands and Lancashire CSU Digital Innovation Unit (mlcsu.digitalinnovations@nhs.net)
 
-### Chat Bot API
-WmsHub_ChatBot_Api_ApiKey
-WmsHub_ChatBot_Api_ArcusSettings:ApiKey
-WmsHub_ChatBot_Api_ArcusSettings:Endpoint
-WmsHub_ChatBot_Api_ArcusSettings:IsNumberWhiteListEnabled
-WmsHub_ChatBot_Api_SignalR:AllowedOrigins:0
+## License
 
-### Chat Bot Service
-WmsHub_ChatBot_Service_ApiKey - Must match WmsHub_ChatBot_Api_ApiKey
-WmsHub_ChatBot_Service_EmailPassword
-
-### Provider API
-WmsHub_Provider_Api_ApiKey
-WmsHub_Provider_Api_AuthOptions:Notifylink
-WmsHub_Provider_Api_AuthOptions:SmsApiKey
-WmsHub_Provider_Api_AuthOptions:SmsSenderId
-WmsHub_Provider_Api_AuthOptions:SmsTemplateId
-
-### Referral API
-WmsHub_Referral_Api_ApiKey
-WmsHub_Referral_Api_PharmacyApiKey
-WmsHub_Referral_Api_PharmacyReferralApiKey
-WmsHub_Referral_Api_PracticeApiKey
-WmsHub_Referral_Api_RmcUiViewReferralUrl
-WmsHub_Referral_Api_SelfReferralApiKey
-
-### Text Message API
-WmsHub_TextMessage_Api_ApiKey
-WmsHub_TextMessage_Api_TextSettings:GeneralReferralNotifyLink
-WmsHub_TextMessage_Api_TextSettings:IsNumberWhiteListEnabled
-WmsHub_TextMessage_Api_TextSettings:Issuer
-WmsHub_TextMessage_Api_TextSettings:Notifylink
-WmsHub_TextMessage_Api_TextSettings:NumberWhiteList:0
-WmsHub_TextMessage_Api_TextSettings:SmsApiKey
-WmsHub_TextMessage_Api_TextSettings:SmsSenderId
-WmsHub_TextMessage_Api_TextSettings:TokenEnabled
-WmsHub_TextMessage_Api_TextSettings:TokenPassword
-WmsHub_TextMessage_Api_TextSettings:TokenSecret
-WmsHub_TextMessage_Api_TextSettings:ValidUsers:0
-
-### Text Message Service
-WmsHub_TextMessage_Service_ApiKey - MUST match WmsHub_TextMessage_Api_ApiKey
-WmsHub_TextMessage_Service_EmailPassword
-
-### UI
-WmsHub_Ui_AzureAd:CallbackPath
-WmsHub_Ui_AzureAd:ClientId
-WmsHub_Ui_AzureAd:Domain
-WmsHub_Ui_AzureAd:Instance
-WmsHub_Ui_AzureAd:TenantId
-WmsHub_Ui_AzureFrontDoor_Uri
-WmsHub_Ui_SignalR_Endpoint
-
-### Referral Service Console
-WmsHub.ReferralService_Data:HubRegistrationAPIKey - Must match WmsHub_Referral_Api_ApiKey
-
-## IdentityAgentApi
-To be able to run the tests:
-Identity Agent needs to be installed
-Connected to HSCN
-Have a valid smart card inserted in a connected reader
-The tests must be run with the 32bit because the TicketAPIDll which provides 
-the interface to the card reader is a 32 bit dll. So you'll need to include 
---runtime win-x86 when you run the tests e.g.
-
-dotnet test --runtime win-x86
-
-to enable logging of the terminal output
-
-dotnet test --runtime win-x86 -l "console;verbosity=detailed"
-
-
+This project is licensed under the MIT License - see the LICENSE.md file for details
